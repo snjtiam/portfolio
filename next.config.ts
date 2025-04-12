@@ -7,8 +7,9 @@ const nextConfig: NextConfig = {
     domains: ["localhost"],
     unoptimized: true,
   },
-  // Uncomment the line below and replace 'resume' with your repo name if this is a GitHub project page
+  assetPrefix: "/portfolio",
   basePath: "/portfolio",
+  trailingSlash: true,
 };
 
 export default nextConfig;

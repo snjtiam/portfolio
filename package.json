@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build && touch out/.nojekyll && cp index.html out/",
+    "build": "rm -rf out && next build && touch out/.nojekyll && cp index.html out/../",
     "start": "next start",
     "lint": "next lint"
   },
