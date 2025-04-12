@@ -4,11 +4,10 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   output: "export",
   images: {
-    domains: ["localhost"],
     unoptimized: true,
   },
-  assetPrefix: "/portfolio",
-  basePath: "/portfolio",
+  // GitHub Pages deployment
+  basePath: "",
   trailingSlash: true,
 };
 
