@@ -1,24 +1,92 @@
 @import "tailwindcss";
 
-@theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #111111;
+    --foreground: #FFFFFF;
+    --font-sans: var(--font-inter);
+    --font-mono: var(--font-geist-mono, monospace);
   }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #111111;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #333333;
+    border-radius: 5px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #444444;
+  }
+}
+
+@font-face {
+  font-family: 'GT Walsheim Pro';
+  src: url('/fonts/GTWalsheimPro-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), sans-serif;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #9845E8, #33D2FF, #DD5789);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.card-gradient-1 {
+  background: linear-gradient(135deg, #FEDC2A, #DD5789, #7A2C9E);
+  transition: transform 0.3s ease;
+}
+
+.card-gradient-2 {
+  background: linear-gradient(135deg, #33D2FF, #3D68DE, #9845E8);
+  transition: transform 0.3s ease;
+}
+
+.card-gradient-3 {
+  background: linear-gradient(135deg, #A1FF8B, #3F93FF);
+  transition: transform 0.3s ease;
+}
+
+.card-gradient-4 {
+  background: linear-gradient(135deg, #6964DE, #FCA6E9);
+  transition: transform 0.3s ease;
+}
+
+.card-gradient-5 {
+  background: linear-gradient(135deg, #FFACC6, #B6E0F5);
+  transition: transform 0.3s ease;
+}
+
+.card-gradient-6 {
+  background: linear-gradient(135deg, #F4426C, #FBF2B1);
+  transition: transform 0.3s ease;
+}
+
+@layer components {
+  .container {
+    @apply max-w-[1200px] mx-auto;
+  }
+  
+  section {
+    @apply scroll-mt-20;
+  }
 }
