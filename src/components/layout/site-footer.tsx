@@ -11,21 +11,20 @@ export function SiteFooter() {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="space-y-3">
             <p className="text-sm uppercase tracking-[0.25em] text-foreground/45">
-              {siteConfig.role}
+              {siteConfig.role} / {siteConfig.speciality}
             </p>
             <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-              Built for founders, clients, and teams who need strong mobile execution.
+              Mobile engineering for teams that care about performance, architecture, and shipping.
             </h2>
             <p className="max-w-2xl text-sm text-foreground/65">
-              Replace the placeholder content in the data file and this landing page is ready to
-              adapt to your personal brand.
+              {siteConfig.footerStatement}
             </p>
           </div>
           <a
             href="#contact"
             className="inline-flex items-center justify-center rounded-full border border-teal-400/30 bg-teal-400/10 px-5 py-3 text-sm font-medium text-teal-100 transition hover:bg-teal-400/15"
           >
-            Hire me
+            Let&apos;s Work Together
           </a>
         </div>
 
@@ -64,9 +63,9 @@ export function SiteFooter() {
 
         <div className="flex flex-col gap-2 text-xs text-foreground/45 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {siteConfig.name}. All rights reserved.
+            (c) {year} {siteConfig.name}. All rights reserved.
           </p>
-          <p>Next.js 15, Tailwind CSS, shadcn/ui patterns, Framer Motion, and lucide-react.</p>
+          <p>{siteConfig.footerStatement}</p>
         </div>
       </Container>
     </footer>

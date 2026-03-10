@@ -19,16 +19,21 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "flex flex-col gap-4",
+        "flex flex-col gap-5",
         align === "center" ? "items-center text-center" : "items-start text-left",
       )}
     >
-      <Badge variant="outline">{eyebrow}</Badge>
-      <div className="space-y-4">
-        <h2 id={id} className="max-w-4xl text-3xl font-semibold sm:text-4xl lg:text-5xl">
+      <Badge variant="outline" className="tracking-[0.22em] text-[0.7rem] text-foreground/70">
+        {eyebrow}
+      </Badge>
+      <div className="space-y-5">
+        <h2
+          id={id}
+          className="text-balance max-w-4xl text-3xl font-semibold leading-[1.02] sm:text-4xl lg:text-[3.35rem]"
+        >
           {title}
         </h2>
-        <p className="max-w-2xl text-base leading-7 text-foreground/70 sm:text-lg">
+        <p className="max-w-3xl text-base leading-7 text-foreground/68 sm:text-lg sm:leading-8">
           {description}
         </p>
       </div>

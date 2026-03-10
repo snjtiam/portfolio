@@ -13,35 +13,35 @@ export function ContactSection() {
     <SectionShell
       id="contact"
       eyebrow="Contact"
-      title="Clear calls-to-action for projects, hiring conversations, and founder intros."
-      description="This section keeps the conversion path simple: book a call, send an email, or point someone to your work."
+      title="Let's talk if you need senior mobile engineering for a product, team, or hiring process."
+      description="Built as the closing CTA for clients, recruiters, and hiring teams who want to start a conversation quickly."
+      className="bg-gradient-to-b from-white/[0.02] to-transparent"
     >
       <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-        <Reveal className="h-full">
-          <Card className="h-full overflow-hidden">
+        <Reveal className="h-full" hover hoverY={7} hoverScale={1.008}>
+          <Card className="h-full overflow-hidden border-white/12">
             <CardHeader className="space-y-5">
               <Badge className="gap-2 normal-case tracking-[0.08em]">
                 {siteConfig.availability}
               </Badge>
               <CardTitle className="text-3xl sm:text-4xl">
-                Need a senior React Native engineer who can own the work and keep the product bar
-                high?
+                Need a Senior React Native Engineer who can own architecture, performance, and delivery?
               </CardTitle>
               <CardDescription className="text-base leading-7">
-                Ideal for startup founders validating an idea, product teams needing contract
-                execution, or companies exploring a full-time senior mobile hire.
+                Reach out if you are hiring, staffing a contract role, planning a mobile rebuild,
+                or need a quick senior review of an app that already exists.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Button asChild size="lg">
-                  <a href={siteConfig.calendlyUrl} target="_blank" rel="noreferrer">
-                    Book a call
+                  <a href={siteConfig.hireUrl}>
+                    Let&apos;s Work Together
                     <ArrowRight className="h-4 w-4" />
                   </a>
                 </Button>
                 <Button asChild size="lg" variant="secondary">
-                  <a href={siteConfig.hireUrl}>Hire me</a>
+                  <a href={`mailto:${siteConfig.email}`}>Email Me</a>
                 </Button>
               </div>
 
@@ -68,12 +68,12 @@ export function ContactSection() {
         </Reveal>
 
         <div className="grid gap-6">
-          <Reveal delay={0.08}>
+          <Reveal delay={0.08} hover hoverY={6} hoverScale={1.008}>
             <Card>
               <CardHeader>
                 <CardTitle>Contact details</CardTitle>
                 <CardDescription>
-                  Replace these placeholders with the channels you actively monitor.
+                  Email and LinkedIn placeholders are wired in through the content file.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -106,7 +106,7 @@ export function ContactSection() {
             </Card>
           </Reveal>
 
-          <Reveal delay={0.14}>
+          <Reveal delay={0.14} hover hoverY={6} hoverScale={1.008}>
             <Card>
               <CardHeader>
                 <CardTitle>Typical process</CardTitle>
@@ -133,4 +133,3 @@ export function ContactSection() {
     </SectionShell>
   );
 }
-

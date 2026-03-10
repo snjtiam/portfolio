@@ -1,119 +1,237 @@
-import { ArrowRight, Sparkles } from "lucide-react";
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight, Layers3, ShieldCheck, Sparkles, Workflow, Zap } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/motion/reveal";
-import { heroMetrics, heroSignals, siteConfig } from "@/content/portfolio";
+import { heroMetrics, heroPillars, heroSignals, siteConfig } from "@/content/portfolio";
+import { iconMap } from "@/lib/icon-map";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export function HeroSection() {
+  const reduceMotion = useReducedMotion();
+  const highlightIcons = [Layers3, Zap, Workflow];
+
   return (
     <section
       id="top"
       aria-labelledby="hero-title"
-      className="relative overflow-hidden pb-16 pt-24 sm:pb-20 sm:pt-28 lg:pb-24 lg:pt-32"
+      className="relative overflow-hidden pb-20 pt-28 sm:pb-24 sm:pt-32 lg:pb-28 lg:pt-36"
     >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/14 to-transparent"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-[-8rem] top-10 h-80 w-80 rounded-full bg-teal-300/10 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-[-10rem] top-20 h-[26rem] w-[26rem] rounded-full bg-cyan-400/10 blur-3xl"
+      />
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <Reveal className="space-y-8">
-            <div className="space-y-6">
-              <Badge className="gap-2 tracking-[0.14em]">
-                <Sparkles className="h-3.5 w-3.5" />
-                {siteConfig.availability}
-              </Badge>
-              <div className="space-y-5">
-                <p className="text-sm uppercase tracking-[0.32em] text-foreground/45">
-                  {siteConfig.role}
+        <div className="grid gap-14 xl:grid-cols-[1.04fr_0.96fr] xl:items-center">
+          <Reveal className="space-y-10" y={30}>
+            <div className="space-y-7">
+              <div className="flex flex-wrap items-center gap-3">
+                <Badge className="gap-2 tracking-[0.14em]">
+                  <Sparkles className="h-3.5 w-3.5" />
+                  {siteConfig.availability}
+                </Badge>
+                <div className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs uppercase tracking-[0.22em] text-foreground/55">
+                  React Native Architecture
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <p className="text-xs uppercase tracking-[0.34em] text-foreground/42 sm:text-sm">
+                  {siteConfig.role} / {siteConfig.speciality}
                 </p>
                 <h1
                   id="hero-title"
-                  className="max-w-4xl text-5xl font-semibold leading-[0.95] text-foreground sm:text-6xl lg:text-7xl"
+                  className="text-balance max-w-5xl text-[3.25rem] font-semibold leading-[0.92] text-foreground sm:text-[4.35rem] lg:text-[5.4rem]"
                 >
                   <span className="text-gradient">{siteConfig.headline}</span>
                 </h1>
-                <p className="max-w-2xl text-lg leading-8 text-foreground/70 sm:text-xl">
+                <p className="max-w-2xl text-lg leading-8 text-foreground/72 sm:text-[1.35rem] sm:leading-9">
                   {siteConfig.intro}
                 </p>
-                <p className="max-w-2xl text-base leading-7 text-foreground/60">
+                <p className="max-w-2xl text-base leading-8 text-foreground/58 sm:text-lg">
                   {siteConfig.secondaryIntro}
                 </p>
               </div>
             </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row">
+            <div className="grid gap-3 sm:grid-cols-3">
+              {siteConfig.heroHighlights.map((item, index) => {
+                const Icon = highlightIcons[index] ?? Workflow;
+
+                return (
+                  <Reveal key={item} delay={0.06 * (index + 1)} hover hoverY={4} hoverScale={1.006}>
+                    <div className="rounded-[24px] border border-white/10 bg-white/[0.035] p-4 shadow-[0_14px_40px_rgba(2,8,23,0.24)] backdrop-blur-xl">
+                      <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-cyan-200">
+                        <Icon className="h-4 w-4" />
+                      </div>
+                      <p className="text-sm leading-6 text-foreground/68">{item}</p>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
+
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Button asChild size="lg">
-                <a href="#contact">
-                  Book a call
+                <a href={siteConfig.hireUrl}>
+                  Hire Me
                   <ArrowRight className="h-4 w-4" />
                 </a>
               </Button>
               <Button asChild size="lg" variant="secondary">
-                <a href="#projects">View projects</a>
-              </Button>
-              <Button asChild size="lg" variant="ghost">
-                <a href={siteConfig.hireUrl}>Hire me</a>
+                <a href="#projects">View Projects</a>
               </Button>
             </div>
 
             <dl className="grid gap-4 sm:grid-cols-3">
               {heroMetrics.map((metric, index) => (
-                <Reveal key={metric.label} delay={0.08 * (index + 1)}>
-                  <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-xl">
-                    <dt className="text-sm text-foreground/55">{metric.label}</dt>
-                    <dd className="mt-3 text-3xl font-semibold text-foreground">{metric.value}</dd>
+                <Reveal
+                  key={metric.label}
+                  delay={0.08 * (index + 1)}
+                  hover
+                  hoverY={5}
+                  hoverScale={1.008}
+                >
+                  <div className="rounded-[26px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.055),rgba(255,255,255,0.02))] p-5 backdrop-blur-xl">
+                    <dt className="text-xs uppercase tracking-[0.24em] text-foreground/45">
+                      {metric.label}
+                    </dt>
+                    <dd className="mt-4 text-3xl font-semibold text-foreground sm:text-[2.1rem]">
+                      {metric.value}
+                    </dd>
                   </div>
                 </Reveal>
               ))}
             </dl>
           </Reveal>
 
-          <Reveal delay={0.12}>
-            <div className="relative">
-              <div
+          <Reveal delay={0.12} className="xl:pl-6">
+            <div className="relative mx-auto max-w-xl">
+              <motion.div
                 aria-hidden
-                className="absolute left-8 top-0 h-32 w-32 rounded-full bg-cyan-400/20 blur-3xl"
-              />
-              <div
+                className="absolute -left-3 top-10 hidden rounded-full border border-white/10 bg-slate-950/80 px-4 py-2 text-xs uppercase tracking-[0.22em] text-cyan-100/85 shadow-[0_16px_36px_rgba(2,8,23,0.35)] sm:block"
+                animate={
+                  reduceMotion
+                    ? undefined
+                    : {
+                        y: [0, -10, 0],
+                      }
+                }
+                transition={{ duration: 7.4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+              >
+                Native bridges
+              </motion.div>
+              <motion.div
                 aria-hidden
-                className="absolute bottom-2 right-6 h-40 w-40 rounded-full bg-teal-400/15 blur-3xl"
-              />
+                className="absolute -right-4 top-2 hidden rounded-full border border-white/10 bg-slate-950/80 px-4 py-2 text-xs uppercase tracking-[0.22em] text-teal-100/85 shadow-[0_16px_36px_rgba(2,8,23,0.35)] sm:block"
+                animate={
+                  reduceMotion
+                    ? undefined
+                    : {
+                        y: [0, 10, 0],
+                      }
+                }
+                transition={{ duration: 8.5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+              >
+                Release systems
+              </motion.div>
 
-              <Card className="relative overflow-hidden bg-white/[0.045]">
-                <div className="hero-grid absolute inset-0 opacity-50" aria-hidden />
-                <CardHeader className="relative pb-5">
-                  <div className="flex items-start justify-between gap-6">
-                    <div className="space-y-3">
-                      <Badge variant="secondary">Premium mobile delivery</Badge>
-                      <CardTitle className="text-2xl sm:text-3xl">
-                        A senior partner for product teams that need momentum without mess.
-                      </CardTitle>
-                    </div>
-                    <div className="hidden rounded-full border border-white/10 bg-white/5 p-3 text-foreground/60 sm:block">
-                      <Sparkles className="h-5 w-5" />
+              <Card className="relative overflow-hidden border-white/12 bg-[linear-gradient(180deg,rgba(15,23,42,0.82),rgba(4,11,23,0.92))]">
+                <div className="hero-grid absolute inset-0 opacity-35" aria-hidden />
+                <div
+                  aria-hidden
+                  className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-cyan-300/10 to-transparent"
+                />
+                <CardHeader className="relative space-y-5 pb-4">
+                  <div className="flex items-center justify-between gap-4">
+                    <Badge variant="secondary" className="tracking-[0.18em]">
+                      Architecture-led delivery
+                    </Badge>
+                    <div className="rounded-full border border-white/10 bg-white/[0.04] p-3 text-cyan-100">
+                      <ShieldCheck className="h-5 w-5" />
                     </div>
                   </div>
-                  <CardDescription className="max-w-xl text-base">
-                    Useful when you need to move from strategy into execution fast, or when the
-                    app exists but delivery confidence does not.
-                  </CardDescription>
+                  <div className="space-y-4">
+                    <CardTitle className="text-balance text-3xl leading-[1.02] sm:text-[2.35rem]">
+                      Reliable mobile systems for products that need to ship and keep scaling.
+                    </CardTitle>
+                    <CardDescription className="max-w-lg text-base leading-7 text-foreground/64">
+                      This side of the hero frames the kind of senior work buyers care about:
+                      clean architecture, production performance, native capabilities, and release
+                      confidence.
+                    </CardDescription>
+                  </div>
                 </CardHeader>
-                <CardContent className="relative grid gap-4 md:grid-cols-2">
-                  {heroSignals.map((signal, index) => (
-                    <Reveal key={signal.title} delay={0.12 + index * 0.08}>
-                      <div className="rounded-3xl border border-white/10 bg-slate-900/70 p-5">
-                        <h3 className="text-base font-medium text-foreground">{signal.title}</h3>
-                        <ul className="mt-4 space-y-3 text-sm leading-6 text-foreground/70">
-                          {signal.items.map((item) => (
-                            <li key={item} className="flex gap-3">
-                              <span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-300" />
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </Reveal>
-                  ))}
+                <CardContent className="relative space-y-4">
+                  <div className="grid gap-3">
+                    {heroPillars.map((pillar, index) => {
+                      const Icon = iconMap[pillar.icon];
+
+                      return (
+                        <Reveal
+                          key={pillar.title}
+                          delay={0.12 + index * 0.08}
+                          hover
+                          hoverY={6}
+                          hoverScale={1.01}
+                        >
+                          <div className="group rounded-[24px] border border-white/10 bg-slate-950/55 p-4 transition duration-300 hover:border-cyan-300/20 hover:bg-slate-950/72">
+                            <div className="flex items-start gap-4">
+                              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-cyan-200 transition duration-300 group-hover:border-cyan-300/20 group-hover:bg-cyan-300/10 group-hover:text-cyan-100">
+                                <Icon className="h-[18px] w-[18px]" />
+                              </div>
+                              <div className="space-y-2">
+                                <h3 className="text-[1rem] font-medium text-foreground">
+                                  {pillar.title}
+                                </h3>
+                                <p className="text-sm leading-6 text-foreground/66">
+                                  {pillar.description}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </Reveal>
+                      );
+                    })}
+                  </div>
+
+                  <div className="grid gap-3 md:grid-cols-2">
+                    {heroSignals.map((signal, index) => (
+                      <Reveal
+                        key={signal.title}
+                        delay={0.18 + index * 0.08}
+                        hover
+                        hoverY={4}
+                        hoverScale={1.006}
+                      >
+                        <div className="rounded-[24px] border border-white/10 bg-white/[0.035] p-5">
+                          <h3 className="text-sm uppercase tracking-[0.22em] text-foreground/48">
+                            {signal.title}
+                          </h3>
+                          <ul className="mt-4 space-y-3 text-sm leading-6 text-foreground/70">
+                            {signal.items.map((item) => (
+                              <li key={item} className="flex gap-3">
+                                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-300" />
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </Reveal>
+                    ))}
+                  </div>
                 </CardContent>
               </Card>
             </div>
@@ -123,4 +241,3 @@ export function HeroSection() {
     </section>
   );
 }
-

@@ -11,10 +11,17 @@ export function TestimonialsSection() {
       eyebrow="Testimonials"
       title="A placeholder section ready for social proof once client quotes are available."
       description="Until real testimonials are added, the layout still preserves visual rhythm and signals where proof should live."
+      className="bg-gradient-to-b from-transparent via-white/[0.012] to-transparent"
     >
       <div className="grid gap-6 lg:grid-cols-3">
         {testimonialPlaceholders.map((item, index) => (
-          <Reveal key={item.title} delay={0.06 * (index + 1)}>
+          <Reveal
+            key={item.title}
+            delay={0.06 * (index + 1)}
+            hover
+            hoverY={6}
+            hoverScale={1.008}
+          >
             <Card className="h-full">
               <CardHeader className="space-y-4">
                 <Badge variant="secondary">{item.role}</Badge>
@@ -34,4 +41,3 @@ export function TestimonialsSection() {
     </SectionShell>
   );
 }
-

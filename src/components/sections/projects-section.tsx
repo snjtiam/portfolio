@@ -18,13 +18,21 @@ export function ProjectsSection() {
     <SectionShell
       id="projects"
       eyebrow="Selected Projects"
-      title="Case-study style placeholders tuned for mobile product work."
-      description="These project cards are ready for real screenshots or links later. For now, the layout emphasizes results, stack, and delivery context."
+      title="Selected mobile projects with business impact and engineering depth."
+      description="Each project card highlights the context, the stack, the engineering work, and the outcome so it reads more like a compact case study than a gallery tile."
+      className="bg-gradient-to-b from-white/[0.018] to-transparent"
     >
-      <div className="grid gap-6 xl:grid-cols-3">
+      <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
         {projects.map((project, index) => (
-          <Reveal key={project.name} delay={0.07 * (index + 1)}>
-            <Card className="flex h-full flex-col overflow-hidden">
+          <Reveal
+            key={project.name}
+            delay={0.07 * (index + 1)}
+            hover
+            hoverY={9}
+            hoverScale={1.012}
+            className={index === 0 ? "lg:col-span-2 xl:col-span-2" : undefined}
+          >
+            <Card className="group flex h-full flex-col overflow-hidden">
               <div className="relative border-b border-white/10 bg-gradient-to-br from-white/[0.09] via-white/[0.03] to-transparent px-6 py-6">
                 <div
                   aria-hidden
@@ -55,7 +63,7 @@ export function ProjectsSection() {
                   {project.stack.map((item) => (
                     <span
                       key={item}
-                      className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs uppercase tracking-[0.16em] text-foreground/60"
+                      className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs uppercase tracking-[0.16em] text-foreground/60 transition duration-300 group-hover:border-white/15 group-hover:bg-white/[0.05]"
                     >
                       {item}
                     </span>
@@ -77,4 +85,3 @@ export function ProjectsSection() {
     </SectionShell>
   );
 }
-

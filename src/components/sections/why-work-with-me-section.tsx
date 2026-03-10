@@ -1,24 +1,25 @@
 import { SectionShell } from "@/components/layout/section-shell";
 import { Reveal } from "@/components/motion/reveal";
-import { skillGroups } from "@/content/portfolio";
+import { whyWorkWithMe } from "@/content/portfolio";
 import { iconMap } from "@/lib/icon-map";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
-export function SkillsSection() {
+export function WhyWorkWithMeSection() {
   return (
     <SectionShell
-      id="skills"
-      eyebrow="Skills"
-      title="Skills grouped around how production mobile systems are actually built."
-      description="Instead of a flat stack list, the skills are grouped by capability area so decision-makers can scan quickly for engineering depth."
+      id="why-work-with-me"
+      eyebrow="Why Work With Me"
+      title="What sets me apart from generic React Native developers."
+      description="I focus on production quality, performance, maintainability, architecture, and collaboration so the mobile app is easier to ship and easier to keep growing."
+      className="bg-gradient-to-b from-transparent via-white/[0.012] to-transparent"
     >
       <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
-        {skillGroups.map((group, index) => {
-          const Icon = iconMap[group.icon];
+        {whyWorkWithMe.map((item, index) => {
+          const Icon = iconMap[item.icon];
 
           return (
             <Reveal
-              key={group.title}
+              key={item.title}
               delay={0.06 * (index + 1)}
               hover
               hoverY={7}
@@ -30,21 +31,12 @@ export function SkillsSection() {
                     <Icon className="h-5 w-5" />
                   </div>
                   <div className="space-y-3">
-                    <CardTitle>{group.title}</CardTitle>
-                    <CardDescription>{group.description}</CardDescription>
+                    <CardTitle>{item.title}</CardTitle>
+                    <CardDescription>{item.description}</CardDescription>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {group.items.map((item) => (
-                      <span
-                        key={item}
-                        className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-foreground/75 transition duration-300 group-hover:border-white/15 group-hover:bg-white/[0.05]"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
+                <CardContent className="pt-0">
+                  <div className="h-px w-full bg-gradient-to-r from-white/12 via-white/6 to-transparent" />
                 </CardContent>
               </Card>
             </Reveal>

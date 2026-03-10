@@ -11,12 +11,13 @@ export function AboutSection() {
       eyebrow="About"
       title="Senior-level React Native execution with product judgment built in."
       description="This section is written as placeholder copy for a consultant-style portfolio. Replace it with your own story, metrics, and niche focus."
+      className="bg-gradient-to-b from-white/[0.018] to-transparent"
     >
       <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-        <Reveal className="space-y-6">
+        <Reveal className="space-y-6" hover hoverY={6} hoverScale={1.008}>
           <Card className="h-full">
             <CardContent className="space-y-6 p-6 sm:p-8">
-              <p className="text-lg leading-8 text-foreground/75">
+              <p className="text-lg leading-8 text-foreground/75 sm:text-[1.15rem]">
                 {siteConfig.name} helps ambitious teams ship React Native products that feel
                 reliable, premium, and intentionally crafted. The work spans discovery, technical
                 architecture, delivery, release systems, and growth-minded iteration.
@@ -39,11 +40,13 @@ export function AboutSection() {
 
         <div className="grid gap-6">
           {aboutStats.map((stat, index) => (
-            <Reveal key={stat.label} delay={0.08 * (index + 1)}>
-              <Card>
+            <Reveal key={stat.label} delay={0.08 * (index + 1)} hover hoverY={5} hoverScale={1.008}>
+              <Card className="h-full">
                 <CardContent className="p-6">
-                  <p className="text-3xl font-semibold text-foreground">{stat.value}</p>
-                  <p className="mt-2 text-sm leading-6 text-foreground/65">{stat.label}</p>
+                  <p className="text-3xl font-semibold text-foreground sm:text-[2.1rem]">
+                    {stat.value}
+                  </p>
+                  <p className="mt-3 text-sm leading-6 text-foreground/65">{stat.label}</p>
                 </CardContent>
               </Card>
             </Reveal>
@@ -53,4 +56,3 @@ export function AboutSection() {
     </SectionShell>
   );
 }
-

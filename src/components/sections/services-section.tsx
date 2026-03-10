@@ -9,18 +9,25 @@ export function ServicesSection() {
     <SectionShell
       id="services"
       eyebrow="Services"
-      title="How this portfolio positions mobile expertise for the right opportunities."
-      description="Each service card is reusable and content-driven. Swap the copy in the content file without touching the layout."
+      title="Services built around serious React Native product work."
+      description="This section is content-driven and maps directly to the kinds of mobile engineering support founders, CTOs, agencies, and recruiters usually care about."
+      className="bg-gradient-to-b from-transparent via-white/[0.012] to-transparent"
     >
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
         {services.map((service, index) => {
           const Icon = iconMap[service.icon];
 
           return (
-            <Reveal key={service.title} delay={0.06 * (index + 1)}>
-              <Card className="h-full transition duration-300 hover:-translate-y-1 hover:border-teal-400/25">
+            <Reveal
+              key={service.title}
+              delay={0.06 * (index + 1)}
+              hover
+              hoverY={8}
+              hoverScale={1.01}
+            >
+              <Card className="group h-full border-white/10 transition duration-300 hover:border-teal-300/18">
                 <CardHeader className="space-y-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-teal-200">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-teal-200 transition duration-300 group-hover:border-teal-300/20 group-hover:bg-teal-300/10 group-hover:text-teal-100">
                     <Icon className="h-5 w-5" />
                   </div>
                   <div className="space-y-3">

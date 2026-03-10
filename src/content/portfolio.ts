@@ -16,6 +16,18 @@ export type SocialLink = {
   icon: IconName;
 };
 
+export type HeroPillar = {
+  title: string;
+  description: string;
+  icon: IconName;
+};
+
+export type HighlightItem = {
+  title: string;
+  detail: string;
+  icon: IconName;
+};
+
 export type Service = {
   title: string;
   description: string;
@@ -63,69 +75,124 @@ export type ContactMethod = {
   icon: IconName;
 };
 
+export type WhyWorkWithMeItem = {
+  title: string;
+  description: string;
+  icon: IconName;
+};
+
 export const siteConfig = {
   name: "Aarav Mehta",
   role: "Senior React Native Engineer",
+  speciality: "Mobile App Architect",
   location: "Remote-first, based in India",
   availability: "Available for freelance, contract, and select full-time roles",
   email: "hello@aaravmehta.dev",
+  linkedinUrl: "https://linkedin.com/in/your-profile",
   phone: "+91 00000 00000",
   url: "https://portfolio.example.com",
   calendlyUrl: "https://cal.com/aaravmehta/intro-call",
   hireUrl: "mailto:hello@aaravmehta.dev?subject=Hiring%20Inquiry",
   description:
-    "Senior React Native engineer crafting premium mobile products for founders, startups, and teams that need strong architecture, fast execution, and polished user experience.",
-  headline: "Mobile products that feel premium, ship faster, and scale cleanly.",
+    "Senior React Native engineer and mobile app architect building scalable, high-performance mobile products with strong architecture, native integrations, and production-ready delivery.",
+  headline: "Senior React Native Engineer and Mobile App Architect for products that need to scale.",
   intro:
-    "I partner with founders and product teams to design architecture, build polished React Native apps, and unblock launches without sacrificing quality.",
+    "I build scalable, high-performance mobile products across iOS and Android with clean React Native architecture, reliable native integrations, and production-ready engineering systems.",
   secondaryIntro:
-    "From greenfield MVPs to complex production refactors, I focus on performance, native-feeling UX, and delivery systems that keep teams moving.",
+    "Founders, CTOs, agencies, and recruiters bring me in when the app needs senior engineering judgment, strong maintainability, and delivery confidence, not just feature throughput.",
   focusAreas: [
-    "Fractional mobile leadership",
-    "End-to-end React Native delivery",
-    "Product-minded execution for startups",
+    "Production-first engineering",
+    "Scalable mobile architecture",
+    "Senior-level product collaboration",
   ],
   heroHighlights: [
-    "React Native + TypeScript with native-level product thinking",
-    "Strong fit for MVP launches, rebuilds, scale-up refactors, and rescue work",
-    "Hands-on across architecture, CI/CD, app performance, and release workflows",
+    "React Native systems designed for long-term scale, not short-term hacks",
+    "Performance and release quality treated as product priorities from day one",
+    "Strong fit for founders, CTOs, agencies, and hiring teams evaluating senior mobile depth",
   ],
+  footerStatement:
+    "Senior React Native engineering for production apps that need architecture, performance, and maintainability.",
 } as const;
 
 export const navItems: NavItem[] = [
-  { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
-  { label: "Testimonials", href: "#testimonials" },
+  { label: "Why Me", href: "#why-work-with-me" },
   { label: "Contact", href: "#contact" },
 ];
 
 export const heroMetrics: Metric[] = [
-  { value: "8+", label: "Years building mobile products" },
-  { value: "20+", label: "Apps shipped or scaled" },
+  { value: "8+", label: "Years in production mobile engineering" },
+  { value: "25+", label: "Apps across Android and iOS" },
   { value: "99.8%", label: "Crash-free targets on recent launches" },
 ];
 
 export const heroSignals = [
   {
-    title: "Typical engagements",
+    title: "Who I work with",
     items: [
-      "Freelance builds for startup founders",
-      "Contract execution for product teams",
-      "Senior-level ownership for mobile roadmaps",
+      "Startup founders building or rebuilding mobile products",
+      "CTOs and agencies needing senior mobile execution",
+      "Recruiters and hiring teams evaluating production depth",
     ],
   },
   {
-    title: "What clients value",
+    title: "What teams value",
     items: [
-      "Clear communication and fast iteration",
-      "Architecture that remains maintainable after launch",
-      "Thoughtful UX polish without bloated scope",
+      "Architecture that stays maintainable after launch",
+      "Performance, stability, and release discipline",
+      "Calm collaboration and strong engineering ownership",
     ],
   },
 ] as const;
+
+export const heroPillars: HeroPillar[] = [
+  {
+    title: "React Native architecture",
+    description: "Scalable foundations for navigation, state, modules, and long-term feature velocity.",
+    icon: "Layers3",
+  },
+  {
+    title: "Performance engineering",
+    description: "Profiling and optimization for launch time, rendering, reliability, and perceived speed.",
+    icon: "Zap",
+  },
+  {
+    title: "Native integrations",
+    description: "Confident delivery across payments, push, camera, maps, auth, BLE, and custom bridges.",
+    icon: "Blocks",
+  },
+];
+
+export const highlightsStrip: HighlightItem[] = [
+  {
+    title: "8+ years of experience",
+    detail: "Shipping and scaling mobile products in production environments.",
+    icon: "Star",
+  },
+  {
+    title: "Android and iOS delivery",
+    detail: "Cross-platform execution with native-level product expectations.",
+    icon: "Smartphone",
+  },
+  {
+    title: "Multiple industries served",
+    detail: "Fintech, health, logistics, SaaS, and consumer mobile products.",
+    icon: "Building2",
+  },
+  {
+    title: "Production-focused engineering",
+    detail: "Release quality, monitoring, performance, and maintainability built in.",
+    icon: "ShieldCheck",
+  },
+  {
+    title: "Scalable architecture mindset",
+    detail: "Codebases designed to support teams, features, and long-term iteration.",
+    icon: "Layers3",
+  },
+];
 
 export const aboutStats: Metric[] = [
   { value: "4-10 wks", label: "to launch focused MVPs" },
@@ -135,102 +202,150 @@ export const aboutStats: Metric[] = [
 
 export const services: Service[] = [
   {
-    title: "React Native App Delivery",
+    title: "React Native app development",
     description:
-      "Build new mobile products with a senior engineer who can own architecture, delivery pace, and product polish from kickoff to release.",
+      "End-to-end development for mobile apps that need clean foundations, polished UX, and production-ready delivery.",
     icon: "Smartphone",
     bullets: [
-      "Greenfield app setup and scalable codebase structure",
-      "App Store and Play Store release readiness",
-      "Performance-minded feature delivery with strong UX detail",
+      "Greenfield app setup for iOS and Android",
+      "Feature delivery with strong product and UX judgment",
+      "Release-ready implementation from architecture to launch",
     ],
   },
   {
-    title: "Mobile Product Rescue",
+    title: "Mobile architecture and codebase scaling",
     description:
-      "Stabilize lagging apps, refactor fragile code, and create a cleaner path to shipping when delivery has slowed down.",
+      "Structure React Native codebases so teams can ship faster without compounding technical debt.",
+    icon: "Layers3",
+    bullets: [
+      "Navigation, module, and folder architecture",
+      "State boundaries and reusable patterns",
+      "Scalable foundations for product growth and hiring",
+    ],
+  },
+  {
+    title: "App performance optimization",
+    description:
+      "Improve startup time, responsiveness, rendering efficiency, and reliability in real production apps.",
+    icon: "Zap",
+    bullets: [
+      "Profiling and bottleneck identification",
+      "Rendering, memory, and navigation performance work",
+      "Crash reduction and runtime stability improvements",
+    ],
+  },
+  {
+    title: "Native module / bridge / TurboModule integrations",
+    description:
+      "Integrate native capabilities confidently when the product requires deeper platform functionality.",
+    icon: "Blocks",
+    bullets: [
+      "Custom bridges and native SDK integration",
+      "Payments, camera, maps, auth, push, and device APIs",
+      "New architecture-friendly implementation decisions",
+    ],
+  },
+  {
+    title: "App modernization / refactoring",
+    description:
+      "Clean up aging mobile codebases and reduce delivery friction without stopping feature progress.",
     icon: "Wrench",
     bullets: [
-      "Crash reduction and reliability improvements",
-      "Navigation, state, and API layer refactors",
-      "Build pipeline, OTA, and release workflow cleanup",
+      "Legacy React Native refactors and cleanup",
+      "Migration planning with low-risk execution",
+      "Improved maintainability for existing product teams",
     ],
   },
   {
-    title: "Fractional Mobile Leadership",
+    title: "Maintenance and release support",
     description:
-      "Support founders and lean teams with technical direction, execution planning, and senior judgment without hiring a full mobile department.",
-    icon: "Users",
+      "Keep shipping smoothly with release processes, CI/CD, observability, and post-launch engineering support.",
+    icon: "Workflow",
     bullets: [
-      "Architecture reviews and delivery planning",
-      "Technical scoping for investor or client commitments",
-      "Mentoring internal engineers and raising quality bars",
-    ],
-  },
-  {
-    title: "Scale and Growth Optimization",
-    description:
-      "Improve conversion, retention, and app quality by tightening the mobile experience where product metrics are won or lost.",
-    icon: "Rocket",
-    bullets: [
-      "Funnel and onboarding optimization",
-      "Performance audits on real devices",
-      "Experiment-friendly analytics and release cadence",
+      "App Store and Play Store release support",
+      "CI/CD, OTA, monitoring, and crash workflows",
+      "Ongoing engineering support for active products",
     ],
   },
 ];
 
 export const skillGroups: SkillGroup[] = [
   {
-    title: "Mobile Engineering",
-    icon: "Code2",
-    description: "Core mobile delivery stack for polished cross-platform products.",
+    title: "Mobile Development",
+    icon: "Smartphone",
+    description: "Core cross-platform engineering stack for shipping polished mobile experiences.",
     items: [
       "React Native",
       "TypeScript",
       "Expo",
-      "Native Modules",
-      "Performance Profiling",
-      "Animations",
+      "JavaScript / ESNext",
+      "Android & iOS delivery",
+      "Reusable component systems",
     ],
   },
   {
-    title: "Architecture",
+    title: "Architecture & Performance",
     icon: "Layers3",
-    description: "Systems that stay clean under feature growth and team scale.",
+    description: "Systems and optimization practices built for scale and production reliability.",
     items: [
-      "State Modeling",
-      "Offline-first UX",
-      "API Layer Design",
-      "Monorepos",
-      "Testing Strategy",
-      "Design Systems",
+      "Scalable codebase structure",
+      "Performance profiling",
+      "Navigation architecture",
+      "Memory and rendering optimization",
+      "Offline and sync-aware flows",
+      "Maintainability planning",
     ],
   },
   {
-    title: "Delivery Systems",
+    title: "State Management & UI",
+    icon: "Sparkles",
+    description: "State, UI systems, and interaction patterns that remain coherent as products grow.",
+    items: [
+      "Redux Toolkit",
+      "Zustand",
+      "React Query / TanStack Query",
+      "Form handling",
+      "Animations",
+      "Design systems",
+    ],
+  },
+  {
+    title: "APIs & Integrations",
+    icon: "Blocks",
+    description: "Third-party services and native capabilities wired into stable mobile experiences.",
+    items: [
+      "REST and GraphQL APIs",
+      "Payments",
+      "Push notifications",
+      "Authentication",
+      "Maps and geolocation",
+      "Native SDK integration",
+    ],
+  },
+  {
+    title: "Testing & Quality",
+    icon: "ShieldCheck",
+    description: "Testing, observability, and release discipline for production confidence.",
+    items: [
+      "Unit testing",
+      "Integration testing",
+      "E2E strategy",
+      "Crash reporting",
+      "Monitoring",
+      "QA-ready release workflows",
+    ],
+  },
+  {
+    title: "CI/CD & Release",
     icon: "Workflow",
-    description: "Operational practices that make release cycles predictable.",
+    description: "Automated release systems and delivery practices that reduce shipping risk.",
     items: [
-      "CI/CD",
-      "EAS / Fastlane",
-      "Crash Reporting",
-      "Feature Flags",
-      "Analytics",
-      "App Store Ops",
-    ],
-  },
-  {
-    title: "Product Collaboration",
-    icon: "BriefcaseBusiness",
-    description: "Hands-on support for founders, PMs, and design-driven teams.",
-    items: [
-      "Scoping",
-      "Discovery",
-      "Technical Roadmaps",
-      "Stakeholder Communication",
-      "Hiring Support",
-      "Code Reviews",
+      "EAS",
+      "Fastlane",
+      "GitHub Actions",
+      "App Store deployment",
+      "Play Store deployment",
+      "Release automation",
     ],
   },
 ];
@@ -240,16 +355,16 @@ export const projects: Project[] = [
     name: "PulsePay",
     category: "Fintech wallet rebuild",
     summary:
-      "Rebuilt a high-friction consumer wallet with a cleaner architecture, native-feeling onboarding, and a release process the product team could trust.",
-    impact: "Lifted completed onboarding by 28% and improved crash-free sessions to 99.8%.",
+      "Rebuilt a consumer payments app around cleaner mobile architecture, stronger onboarding flows, and more reliable release operations.",
+    impact: "Improved onboarding completion by 28% and increased crash-free sessions to 99.8%.",
     timeline: "12-week engagement",
     stack: ["React Native", "TypeScript", "Expo", "Zustand", "RevenueCat"],
     outcomes: [
-      "Refactored navigation and state for faster feature iteration",
-      "Introduced instrumentation for onboarding and payment flows",
-      "Reduced support churn caused by inconsistent edge-case handling",
+      "Refactored navigation and state boundaries for faster iteration",
+      "Introduced instrumentation across onboarding and payment funnels",
+      "Stabilized edge cases that were causing user and support friction",
     ],
-    ctaLabel: "Request case study",
+    ctaLabel: "View Details",
     ctaHref: "#contact",
   },
   {
@@ -262,10 +377,10 @@ export const projects: Project[] = [
     stack: ["React Native", "React Query", "SQLite", "TypeScript", "Fastlane"],
     outcomes: [
       "Designed sync-safe flows for queued tasks and attachments",
-      "Created reusable UI primitives for rapid feature rollout",
-      "Built release automation to support frequent client deployments",
+      "Created reusable mobile UI primitives for rapid rollout",
+      "Built release automation for dependable field deployments",
     ],
-    ctaLabel: "View delivery approach",
+    ctaLabel: "View Details",
     ctaHref: "#contact",
   },
   {
@@ -281,7 +396,39 @@ export const projects: Project[] = [
       "Balanced speed with reusable architecture for post-launch growth",
       "Refined interactions and visual details to support premium positioning",
     ],
-    ctaLabel: "Talk through a similar build",
+    ctaLabel: "View Details",
+    ctaHref: "#contact",
+  },
+  {
+    name: "CareLoop",
+    category: "Healthcare engagement platform",
+    summary:
+      "Supported a health product team with a more maintainable React Native foundation for patient communication, reminders, and role-based workflows.",
+    impact: "Reduced release regressions and shortened feature QA cycles across the mobile app.",
+    timeline: "Long-term modernization engagement",
+    stack: ["React Native", "TypeScript", "Redux Toolkit", "Firebase", "Fastlane"],
+    outcomes: [
+      "Modernized legacy screens and shared state boundaries",
+      "Improved reliability around notifications and appointment workflows",
+      "Raised code quality and release confidence for the internal team",
+    ],
+    ctaLabel: "View Details",
+    ctaHref: "#contact",
+  },
+  {
+    name: "SwiftFleet",
+    category: "Logistics and dispatch tooling",
+    summary:
+      "Built mobile delivery workflows for dispatch teams that needed real-time task visibility, route updates, and robust device behavior under field conditions.",
+    impact: "Helped operations teams move faster with clearer mobile workflows and better release reliability.",
+    timeline: "Agency delivery partnership",
+    stack: ["React Native", "TypeScript", "React Query", "Maps SDK", "CI/CD"],
+    outcomes: [
+      "Integrated route, map, and task state into a more stable architecture",
+      "Improved performance on data-heavy operational screens",
+      "Created reusable patterns for future feature teams",
+    ],
+    ctaLabel: "View Details",
     ctaHref: "#contact",
   },
 ];
@@ -322,6 +469,39 @@ export const experience: ExperienceItem[] = [
   },
 ];
 
+export const whyWorkWithMe: WhyWorkWithMeItem[] = [
+  {
+    title: "Production-minded from day one",
+    description:
+      "I optimize for the realities of shipping and maintaining mobile apps, not just delivering isolated screens.",
+    icon: "ShieldCheck",
+  },
+  {
+    title: "Architecture that supports growth",
+    description:
+      "Codebases are structured to handle more features, more engineers, and more releases without slowing down.",
+    icon: "Layers3",
+  },
+  {
+    title: "Performance users can feel",
+    description:
+      "I treat startup time, responsiveness, and reliability as core product quality metrics.",
+    icon: "Zap",
+  },
+  {
+    title: "Native depth when required",
+    description:
+      "When the product needs deeper platform work, I can reason through bridges, SDKs, and integration tradeoffs.",
+    icon: "Blocks",
+  },
+  {
+    title: "Easy to work with at senior level",
+    description:
+      "Clear communication, collaboration with product and design, and calm execution under changing priorities.",
+    icon: "Users",
+  },
+];
+
 export const testimonialPlaceholders: TestimonialPlaceholder[] = [
   {
     title: "Founder testimonial",
@@ -351,10 +531,10 @@ export const contactMethods: ContactMethod[] = [
     icon: "Mail",
   },
   {
-    label: "Book a call",
-    value: "Schedule a 30-minute intro",
-    href: siteConfig.calendlyUrl,
-    icon: "CalendarDays",
+    label: "LinkedIn",
+    value: "linkedin.com/in/your-profile",
+    href: siteConfig.linkedinUrl,
+    icon: "Linkedin",
   },
   {
     label: "Response time",
@@ -373,7 +553,7 @@ export const contactMethods: ContactMethod[] = [
 export const socialLinks: SocialLink[] = [
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/your-profile",
+    href: siteConfig.linkedinUrl,
     icon: "Linkedin",
   },
   {

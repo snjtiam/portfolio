@@ -29,10 +29,12 @@ export function SectionShell({
     <section
       id={id}
       aria-labelledby={`${id}-title`}
-      className={cn("scroll-mt-28 py-20 sm:py-24 lg:py-28", className)}
+      className={cn("relative scroll-mt-28 py-24 sm:py-28 lg:py-32", className)}
     >
+      <div aria-hidden className="section-divider absolute inset-x-0 top-0 h-px opacity-80" />
+      <div aria-hidden className="section-wash absolute inset-0 pointer-events-none opacity-70" />
       <Container>
-        <div className={cn("space-y-12", contentClassName)}>
+        <div className={cn("relative space-y-14 sm:space-y-16", contentClassName)}>
           <SectionHeading
             id={`${id}-title`}
             eyebrow={eyebrow}
@@ -46,4 +48,3 @@ export function SectionShell({
     </section>
   );
 }
-

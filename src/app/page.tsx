@@ -1,14 +1,14 @@
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import {
-  AboutSection,
   ContactSection,
   ExperienceSection,
   HeroSection,
+  HighlightsStripSection,
   ProjectsSection,
   ServicesSection,
   SkillsSection,
-  TestimonialsSection,
+  WhyWorkWithMeSection,
 } from "@/components/sections";
 
 export default function HomePage() {
@@ -17,16 +17,15 @@ export default function HomePage() {
       <SiteHeader />
       <main id="main-content" className="relative overflow-hidden">
         <HeroSection />
-        <AboutSection />
+        <HighlightsStripSection />
         <ServicesSection />
         <SkillsSection />
         <ProjectsSection />
         <ExperienceSection />
-        <TestimonialsSection />
+        <WhyWorkWithMeSection />
         <ContactSection />
       </main>
       <SiteFooter />
     </>
   );
 }
-

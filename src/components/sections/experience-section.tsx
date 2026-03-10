@@ -8,12 +8,18 @@ export function ExperienceSection() {
     <SectionShell
       id="experience"
       eyebrow="Experience"
-      title="A concise timeline that supports both consulting credibility and full-time hiring."
-      description="Use this section to show progression, leadership scope, and the kinds of environments you work best in."
+      title="Professional experience across product delivery, mobile leadership, and hands-on engineering."
+      description="Use the timeline to show where you worked, how long you were there, and the kinds of results you were trusted to deliver."
     >
       <div className="relative space-y-6 before:absolute before:left-[15px] before:top-2 before:h-[calc(100%-1rem)] before:w-px before:bg-white/10 sm:before:left-6">
         {experience.map((item, index) => (
-          <Reveal key={`${item.company}-${item.period}`} delay={0.08 * (index + 1)}>
+          <Reveal
+            key={`${item.company}-${item.period}`}
+            delay={0.08 * (index + 1)}
+            hover
+            hoverY={6}
+            hoverScale={1.008}
+          >
             <div className="relative pl-10 sm:pl-16">
               <span className="absolute left-0 top-6 h-8 w-8 rounded-full border border-teal-300/30 bg-teal-300/10 sm:left-2" />
               <Card>
