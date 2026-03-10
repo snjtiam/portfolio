@@ -26,10 +26,11 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: [
     "Senior React Native Engineer",
-    "React Native freelancer",
-    "mobile app consultant",
-    "startup mobile developer",
-    "contract React Native engineer",
+    "React Native consultant",
+    "mobile app architecture",
+    "TurboModules and JSI",
+    "React Native performance optimization",
+    "cross-platform mobile engineer",
   ],
   alternates: {
     canonical: "/",
@@ -71,8 +72,10 @@ const personSchema = {
     "React Native",
     "TypeScript",
     "Mobile app architecture",
-    "Freelance mobile development",
-    "Startup product delivery",
+    "TurboModules",
+    "JSI",
+    "FHIR mobile integrations",
+    "CI/CD for mobile releases",
   ],
 };
 
@@ -106,4 +109,3 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
     </html>
   );
 }
-

@@ -1,6 +1,6 @@
 import { SectionShell } from "@/components/layout/section-shell";
 import { Reveal } from "@/components/motion/reveal";
-import { services } from "@/content/portfolio";
+import { servicesContent } from "@/content/portfolio";
 import { iconMap } from "@/lib/icon-map";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -8,13 +8,13 @@ export function ServicesSection() {
   return (
     <SectionShell
       id="services"
-      eyebrow="Services"
-      title="Services built around serious React Native product work."
-      description="This section is content-driven and maps directly to the kinds of mobile engineering support founders, CTOs, agencies, and recruiters usually care about."
+      eyebrow={servicesContent.eyebrow}
+      title={servicesContent.title}
+      description={servicesContent.description}
       className="bg-gradient-to-b from-transparent via-white/[0.012] to-transparent"
     >
       <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
-        {services.map((service, index) => {
+        {servicesContent.items.map((service, index) => {
           const Icon = iconMap[service.icon];
 
           return (

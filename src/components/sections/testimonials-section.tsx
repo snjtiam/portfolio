@@ -9,8 +9,8 @@ export function TestimonialsSection() {
     <SectionShell
       id="testimonials"
       eyebrow="Testimonials"
-      title="A placeholder section ready for social proof once client quotes are available."
-      description="Until real testimonials are added, the layout still preserves visual rhythm and signals where proof should live."
+      title="Client feedback and partner references."
+      description="This section is ready for quotes from founders, clients, or managers once you want to publish social proof."
       className="bg-gradient-to-b from-transparent via-white/[0.012] to-transparent"
     >
       <div className="grid gap-6 lg:grid-cols-3">
@@ -30,8 +30,8 @@ export function TestimonialsSection() {
               </CardHeader>
               <CardContent>
                 <div className="rounded-2xl border border-dashed border-white/15 bg-white/[0.02] p-4 text-sm text-foreground/45">
-                  Replace this card with a short quote, name, role, company, and optionally a
-                  project result.
+                  Add a short quote, name, role, company, and one concrete result to turn this
+                  into proof instead of a generic testimonial block.
                 </div>
               </CardContent>
             </Card>

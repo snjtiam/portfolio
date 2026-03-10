@@ -1,6 +1,6 @@
 import { SectionShell } from "@/components/layout/section-shell";
 import { Reveal } from "@/components/motion/reveal";
-import { whyWorkWithMe } from "@/content/portfolio";
+import { whyWorkWithMeContent } from "@/content/portfolio";
 import { iconMap } from "@/lib/icon-map";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -8,13 +8,13 @@ export function WhyWorkWithMeSection() {
   return (
     <SectionShell
       id="why-work-with-me"
-      eyebrow="Why Work With Me"
-      title="What sets me apart from generic React Native developers."
-      description="I focus on production quality, performance, maintainability, architecture, and collaboration so the mobile app is easier to ship and easier to keep growing."
+      eyebrow={whyWorkWithMeContent.eyebrow}
+      title={whyWorkWithMeContent.title}
+      description={whyWorkWithMeContent.description}
       className="bg-gradient-to-b from-transparent via-white/[0.012] to-transparent"
     >
       <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
-        {whyWorkWithMe.map((item, index) => {
+        {whyWorkWithMeContent.items.map((item, index) => {
           const Icon = iconMap[item.icon];
 
           return (

@@ -1,6 +1,6 @@
 import { SectionShell } from "@/components/layout/section-shell";
 import { Reveal } from "@/components/motion/reveal";
-import { aboutStats, siteConfig } from "@/content/portfolio";
+import { aboutContent } from "@/content/portfolio";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -8,27 +8,29 @@ export function AboutSection() {
   return (
     <SectionShell
       id="about"
-      eyebrow="About"
-      title="Senior-level React Native execution with product judgment built in."
-      description="This section is written as placeholder copy for a consultant-style portfolio. Replace it with your own story, metrics, and niche focus."
+      eyebrow={aboutContent.eyebrow}
+      title={aboutContent.title}
+      description={aboutContent.description}
       className="bg-gradient-to-b from-white/[0.018] to-transparent"
     >
       <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
         <Reveal className="space-y-6" hover hoverY={6} hoverScale={1.008}>
           <Card className="h-full">
             <CardContent className="space-y-6 p-6 sm:p-8">
-              <p className="text-lg leading-8 text-foreground/75 sm:text-[1.15rem]">
-                {siteConfig.name} helps ambitious teams ship React Native products that feel
-                reliable, premium, and intentionally crafted. The work spans discovery, technical
-                architecture, delivery, release systems, and growth-minded iteration.
-              </p>
-              <p className="text-base leading-7 text-foreground/65">
-                The positioning is intentionally tuned for freelance clients, startup founders, and
-                full-time hiring teams looking for someone who can contribute at both the
-                implementation and product-shaping level.
-              </p>
+              {aboutContent.paragraphs.map((paragraph, index) => (
+                <p
+                  key={paragraph}
+                  className={
+                    index === 0
+                      ? "text-lg leading-8 text-foreground/75 sm:text-[1.15rem]"
+                      : "text-base leading-7 text-foreground/65"
+                  }
+                >
+                  {paragraph}
+                </p>
+              ))}
               <div className="flex flex-wrap gap-3">
-                {siteConfig.focusAreas.map((area) => (
+                {aboutContent.focusAreas.map((area) => (
                   <Badge key={area} variant="secondary" className="tracking-[0.08em] normal-case">
                     {area}
                   </Badge>
@@ -39,7 +41,7 @@ export function AboutSection() {
         </Reveal>
 
         <div className="grid gap-6">
-          {aboutStats.map((stat, index) => (
+          {aboutContent.stats.map((stat, index) => (
             <Reveal key={stat.label} delay={0.08 * (index + 1)} hover hoverY={5} hoverScale={1.008}>
               <Card className="h-full">
                 <CardContent className="p-6">

@@ -5,7 +5,7 @@ import { ArrowRight, Layers3, ShieldCheck, Sparkles, Workflow, Zap } from "lucid
 
 import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/motion/reveal";
-import { heroMetrics, heroPillars, heroSignals, siteConfig } from "@/content/portfolio";
+import { heroContent } from "@/content/portfolio";
 import { iconMap } from "@/lib/icon-map";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -40,34 +40,34 @@ export function HeroSection() {
               <div className="flex flex-wrap items-center gap-3">
                 <Badge className="gap-2 tracking-[0.14em]">
                   <Sparkles className="h-3.5 w-3.5" />
-                  {siteConfig.availability}
+                  {heroContent.badge}
                 </Badge>
                 <div className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs uppercase tracking-[0.22em] text-foreground/55">
-                  React Native Architecture
+                  {heroContent.contextLabel}
                 </div>
               </div>
 
               <div className="space-y-6">
                 <p className="text-xs uppercase tracking-[0.34em] text-foreground/42 sm:text-sm">
-                  {siteConfig.role} / {siteConfig.speciality}
+                  {heroContent.roleLine}
                 </p>
                 <h1
                   id="hero-title"
                   className="text-balance max-w-5xl text-[3.25rem] font-semibold leading-[0.92] text-foreground sm:text-[4.35rem] lg:text-[5.4rem]"
                 >
-                  <span className="text-gradient">{siteConfig.headline}</span>
+                  <span className="text-gradient">{heroContent.headline}</span>
                 </h1>
                 <p className="max-w-2xl text-lg leading-8 text-foreground/72 sm:text-[1.35rem] sm:leading-9">
-                  {siteConfig.intro}
+                  {heroContent.intro}
                 </p>
                 <p className="max-w-2xl text-base leading-8 text-foreground/58 sm:text-lg">
-                  {siteConfig.secondaryIntro}
+                  {heroContent.secondaryIntro}
                 </p>
               </div>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-3">
-              {siteConfig.heroHighlights.map((item, index) => {
+              {heroContent.highlights.map((item, index) => {
                 const Icon = highlightIcons[index] ?? Workflow;
 
                 return (
@@ -85,18 +85,18 @@ export function HeroSection() {
 
             <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Button asChild size="lg">
-                <a href={siteConfig.hireUrl}>
-                  Hire Me
+                <a href={heroContent.primaryCta.href}>
+                  {heroContent.primaryCta.label}
                   <ArrowRight className="h-4 w-4" />
                 </a>
               </Button>
               <Button asChild size="lg" variant="secondary">
-                <a href="#projects">View Projects</a>
+                <a href={heroContent.secondaryCta.href}>{heroContent.secondaryCta.label}</a>
               </Button>
             </div>
 
             <dl className="grid gap-4 sm:grid-cols-3">
-              {heroMetrics.map((metric, index) => (
+              {heroContent.metrics.map((metric, index) => (
                 <Reveal
                   key={metric.label}
                   delay={0.08 * (index + 1)}
@@ -131,7 +131,7 @@ export function HeroSection() {
                 }
                 transition={{ duration: 7.4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
               >
-                Native bridges
+                {heroContent.floatingLabels[0]}
               </motion.div>
               <motion.div
                 aria-hidden
@@ -145,7 +145,7 @@ export function HeroSection() {
                 }
                 transition={{ duration: 8.5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
               >
-                Release systems
+                {heroContent.floatingLabels[1]}
               </motion.div>
 
               <Card className="relative overflow-hidden border-white/12 bg-[linear-gradient(180deg,rgba(15,23,42,0.82),rgba(4,11,23,0.92))]">
@@ -157,7 +157,7 @@ export function HeroSection() {
                 <CardHeader className="relative space-y-5 pb-4">
                   <div className="flex items-center justify-between gap-4">
                     <Badge variant="secondary" className="tracking-[0.18em]">
-                      Architecture-led delivery
+                      {heroContent.panelBadge}
                     </Badge>
                     <div className="rounded-full border border-white/10 bg-white/[0.04] p-3 text-cyan-100">
                       <ShieldCheck className="h-5 w-5" />
@@ -165,18 +165,16 @@ export function HeroSection() {
                   </div>
                   <div className="space-y-4">
                     <CardTitle className="text-balance text-3xl leading-[1.02] sm:text-[2.35rem]">
-                      Reliable mobile systems for products that need to ship and keep scaling.
+                      {heroContent.panelTitle}
                     </CardTitle>
                     <CardDescription className="max-w-lg text-base leading-7 text-foreground/64">
-                      This side of the hero frames the kind of senior work buyers care about:
-                      clean architecture, production performance, native capabilities, and release
-                      confidence.
+                      {heroContent.panelDescription}
                     </CardDescription>
                   </div>
                 </CardHeader>
                 <CardContent className="relative space-y-4">
                   <div className="grid gap-3">
-                    {heroPillars.map((pillar, index) => {
+                    {heroContent.pillars.map((pillar, index) => {
                       const Icon = iconMap[pillar.icon];
 
                       return (
@@ -208,7 +206,7 @@ export function HeroSection() {
                   </div>
 
                   <div className="grid gap-3 md:grid-cols-2">
-                    {heroSignals.map((signal, index) => (
+                    {heroContent.signals.map((signal, index) => (
                       <Reveal
                         key={signal.title}
                         delay={0.18 + index * 0.08}

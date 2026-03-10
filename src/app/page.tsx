@@ -1,6 +1,7 @@
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import {
+  AboutSection,
   ContactSection,
   ExperienceSection,
   HeroSection,
@@ -18,6 +19,7 @@ export default function HomePage() {
       <main id="main-content" className="relative overflow-hidden">
         <HeroSection />
         <HighlightsStripSection />
+        <AboutSection />
         <ServicesSection />
         <SkillsSection />
         <ProjectsSection />

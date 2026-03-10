@@ -14,7 +14,7 @@ export function SiteFooter() {
               {siteConfig.role} / {siteConfig.speciality}
             </p>
             <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-              Mobile engineering for teams that care about performance, architecture, and shipping.
+              {siteConfig.footerHeading}
             </h2>
             <p className="max-w-2xl text-sm text-foreground/65">
               {siteConfig.footerStatement}

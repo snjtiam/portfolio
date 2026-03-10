@@ -1,6 +1,6 @@
 import { SectionShell } from "@/components/layout/section-shell";
 import { Reveal } from "@/components/motion/reveal";
-import { skillGroups } from "@/content/portfolio";
+import { skillsContent } from "@/content/portfolio";
 import { iconMap } from "@/lib/icon-map";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -8,12 +8,12 @@ export function SkillsSection() {
   return (
     <SectionShell
       id="skills"
-      eyebrow="Skills"
-      title="Skills grouped around how production mobile systems are actually built."
-      description="Instead of a flat stack list, the skills are grouped by capability area so decision-makers can scan quickly for engineering depth."
+      eyebrow={skillsContent.eyebrow}
+      title={skillsContent.title}
+      description={skillsContent.description}
     >
       <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
-        {skillGroups.map((group, index) => {
+        {skillsContent.groups.map((group, index) => {
           const Icon = iconMap[group.icon];
 
           return (

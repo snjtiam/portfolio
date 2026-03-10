@@ -86,7 +86,7 @@ export function SiteHeader() {
               aria-label={`${siteConfig.name} home`}
             >
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-teal-300 via-cyan-400 to-blue-500 text-sm font-semibold text-slate-950">
-                AM
+                {siteConfig.initials}
               </span>
               <span className="hidden min-w-0 sm:block">
                 <span className="block truncate text-sm font-semibold text-foreground">
@@ -168,11 +168,10 @@ export function SiteHeader() {
                 <div className="space-y-5">
                   <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4">
                     <p className="text-xs uppercase tracking-[0.28em] text-foreground/45">
-                      Mobile systems partner
+                      {siteConfig.mobileNavEyebrow}
                     </p>
                     <p className="mt-3 max-w-xs text-sm leading-6 text-foreground/72">
-                      Architecture, performance, and native integrations for teams that need senior
-                      execution.
+                      {siteConfig.mobileNavDescription}
                     </p>
                   </div>
 

@@ -1,18 +1,18 @@
 import { SectionShell } from "@/components/layout/section-shell";
 import { Reveal } from "@/components/motion/reveal";
-import { experience } from "@/content/portfolio";
+import { experienceContent } from "@/content/portfolio";
 import { Card, CardContent } from "@/components/ui/card";
 
 export function ExperienceSection() {
   return (
     <SectionShell
       id="experience"
-      eyebrow="Experience"
-      title="Professional experience across product delivery, mobile leadership, and hands-on engineering."
-      description="Use the timeline to show where you worked, how long you were there, and the kinds of results you were trusted to deliver."
+      eyebrow={experienceContent.eyebrow}
+      title={experienceContent.title}
+      description={experienceContent.description}
     >
       <div className="relative space-y-6 before:absolute before:left-[15px] before:top-2 before:h-[calc(100%-1rem)] before:w-px before:bg-white/10 sm:before:left-6">
-        {experience.map((item, index) => (
+        {experienceContent.items.map((item, index) => (
           <Reveal
             key={`${item.company}-${item.period}`}
             delay={0.08 * (index + 1)}

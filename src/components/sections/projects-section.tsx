@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 
 import { SectionShell } from "@/components/layout/section-shell";
 import { Reveal } from "@/components/motion/reveal";
-import { projects } from "@/content/portfolio";
+import { projectsContent } from "@/content/portfolio";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -17,13 +17,13 @@ export function ProjectsSection() {
   return (
     <SectionShell
       id="projects"
-      eyebrow="Selected Projects"
-      title="Selected mobile projects with business impact and engineering depth."
-      description="Each project card highlights the context, the stack, the engineering work, and the outcome so it reads more like a compact case study than a gallery tile."
+      eyebrow={projectsContent.eyebrow}
+      title={projectsContent.title}
+      description={projectsContent.description}
       className="bg-gradient-to-b from-white/[0.018] to-transparent"
     >
       <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
-        {projects.map((project, index) => (
+        {projectsContent.items.map((project, index) => (
           <Reveal
             key={project.name}
             delay={0.07 * (index + 1)}
