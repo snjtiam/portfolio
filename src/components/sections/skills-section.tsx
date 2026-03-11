@@ -1,18 +1,31 @@
+import { cn } from "@/lib/utils";
 import { SectionShell } from "@/components/layout/section-shell";
 import { Reveal } from "@/components/motion/reveal";
 import { skillsContent } from "@/content/portfolio";
 import { iconMap } from "@/lib/icon-map";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
-export function SkillsSection() {
+type SkillsSectionProps = {
+  id?: string;
+  showHeading?: boolean;
+  className?: string;
+};
+
+export function SkillsSection({
+  id = "skills",
+  showHeading = true,
+  className,
+}: SkillsSectionProps) {
   return (
     <SectionShell
-      id="skills"
+      id={id}
       eyebrow={skillsContent.eyebrow}
       title={skillsContent.title}
       description={skillsContent.description}
+      className={cn(className)}
+      showHeading={showHeading}
     >
-      <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2 2xl:grid-cols-3">
         {skillsContent.groups.map((group, index) => {
           const Icon = iconMap[group.icon];
 
@@ -23,6 +36,7 @@ export function SkillsSection() {
               hover
               hoverY={7}
               hoverScale={1.01}
+              className="h-full"
             >
               <Card className="group h-full">
                 <CardHeader className="space-y-4">

@@ -13,6 +13,7 @@ type SectionShellProps = {
   className?: string;
   contentClassName?: string;
   headingAlign?: "left" | "center";
+  showHeading?: boolean;
 };
 
 export function SectionShell({
@@ -24,24 +25,33 @@ export function SectionShell({
   className,
   contentClassName,
   headingAlign = "left",
+  showHeading = true,
 }: SectionShellProps) {
   return (
     <section
       id={id}
       aria-labelledby={`${id}-title`}
-      className={cn("relative scroll-mt-28 py-24 sm:py-28 lg:py-32", className)}
+      className={cn("relative scroll-mt-24 py-20 sm:scroll-mt-28 sm:py-24 lg:scroll-mt-32 lg:py-28 xl:py-32", className)}
     >
       <div aria-hidden className="section-divider absolute inset-x-0 top-0 h-px opacity-80" />
       <div aria-hidden className="section-wash absolute inset-0 pointer-events-none opacity-70" />
       <Container>
-        <div className={cn("relative space-y-14 sm:space-y-16", contentClassName)}>
-          <SectionHeading
-            id={`${id}-title`}
-            eyebrow={eyebrow}
-            title={title}
-            description={description}
-            align={headingAlign}
-          />
+        <div
+          className={cn(
+            "relative",
+            showHeading ? "space-y-12 sm:space-y-14 lg:space-y-16" : "space-y-0",
+            contentClassName,
+          )}
+        >
+          {showHeading ? (
+            <SectionHeading
+              id={`${id}-title`}
+              eyebrow={eyebrow}
+              title={title}
+              description={description}
+              align={headingAlign}
+            />
+          ) : null}
           {children}
         </div>
       </Container>

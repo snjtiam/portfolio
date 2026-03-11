@@ -1,19 +1,31 @@
+import { cn } from "@/lib/utils";
 import { SectionShell } from "@/components/layout/section-shell";
 import { Reveal } from "@/components/motion/reveal";
 import { aboutContent } from "@/content/portfolio";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 
-export function AboutSection() {
+type AboutSectionProps = {
+  id?: string;
+  showHeading?: boolean;
+  className?: string;
+};
+
+export function AboutSection({
+  id = "about",
+  showHeading = true,
+  className,
+}: AboutSectionProps) {
   return (
     <SectionShell
-      id="about"
+      id={id}
       eyebrow={aboutContent.eyebrow}
       title={aboutContent.title}
       description={aboutContent.description}
-      className="bg-gradient-to-b from-white/[0.018] to-transparent"
+      className={cn("bg-gradient-to-b from-white/[0.018] to-transparent", className)}
+      showHeading={showHeading}
     >
-      <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
         <Reveal className="space-y-6" hover hoverY={6} hoverScale={1.008}>
           <Card className="h-full">
             <CardContent className="space-y-6 p-6 sm:p-8">
@@ -40,7 +52,7 @@ export function AboutSection() {
           </Card>
         </Reveal>
 
-        <div className="grid gap-6">
+        <div className="grid gap-6 sm:grid-cols-3 xl:grid-cols-1">
           {aboutContent.stats.map((stat, index) => (
             <Reveal key={stat.label} delay={0.08 * (index + 1)} hover hoverY={5} hoverScale={1.008}>
               <Card className="h-full">

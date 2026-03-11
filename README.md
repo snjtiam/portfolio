@@ -1,20 +1,33 @@
 # Portfolio Website
 
-Modern single-page personal portfolio built with Next.js 15 App Router, TypeScript, Tailwind CSS, shadcn/ui-style reusable components, Framer Motion, and lucide-react.
+Premium portfolio website for a Senior React Native Engineer, built with Next.js 15 App Router, TypeScript, Tailwind CSS, reusable shadcn/ui-style components, Framer Motion, lucide-react, and Playwright coverage for responsive QA.
 
 ## Stack
 
 - Next.js 15 App Router
 - TypeScript
 - Tailwind CSS
-- shadcn/ui component structure
+- Reusable shadcn/ui-style component structure
 - Framer Motion
 - lucide-react
+- Playwright
 
-## Getting started
+## Install
 
 ```bash
 npm install
+npx playwright install chromium
+```
+
+On Windows PowerShell with script execution disabled, use:
+
+```bash
+npx.cmd playwright install chromium
+```
+
+## Run locally
+
+```bash
 npm run dev
 ```
 
@@ -27,54 +40,66 @@ Open `http://localhost:3000`.
 - `npm run start` runs the production build
 - `npm run lint` runs ESLint
 - `npm run typecheck` runs TypeScript checks
+- `npm run test:e2e` runs the Playwright test suite
+- `npm run test:e2e:headed` runs Playwright with a visible browser
 
-## Customization
+## Content editing
 
-Primary content lives in [src/content/portfolio.ts](./src/content/portfolio.ts). Update that file to replace:
+Primary site content lives in:
 
-- name, role, contact details, and profile links
-- hero copy and metrics
-- services, skills, projects, experience, and testimonials
+- [src/content/portfolio.ts](./src/content/portfolio.ts)
+- [src/content/pages.ts](./src/content/pages.ts)
+
+Update those files to replace:
+
+- name, role, email, LinkedIn, GitHub, and resume links
+- hero copy and conversion CTAs
+- services, skills, projects, and experience content
+- page intros, route metadata, and navigation labels
 - `siteConfig.url` for production metadata, sitemap, and robots output
 
-## Folder structure
+## Project structure
 
 ```text
 .
-├── README.md
-├── components.json
-├── eslint.config.mjs
-├── next.config.ts
-├── package.json
-├── postcss.config.mjs
-├── public
-│   └── icon.svg
-├── src
-│   ├── app
-│   │   ├── globals.css
-│   │   ├── icon.svg
-│   │   ├── layout.tsx
-│   │   ├── manifest.ts
-│   │   ├── page.tsx
-│   │   ├── robots.ts
-│   │   └── sitemap.ts
-│   ├── components
-│   │   ├── layout
-│   │   ├── motion
-│   │   ├── sections
-│   │   └── ui
-│   ├── content
-│   │   └── portfolio.ts
-│   └── lib
-│       ├── icon-map.ts
-│       └── utils.ts
-├── tailwind.config.ts
-└── tsconfig.json
+|-- README.md
+|-- components.json
+|-- next.config.ts
+|-- package.json
+|-- playwright.config.ts
+|-- public
+|-- src
+|   |-- app
+|   |   |-- about
+|   |   |-- contact
+|   |   |-- experience
+|   |   |-- projects
+|   |   |-- services
+|   |   |-- globals.css
+|   |   |-- layout.tsx
+|   |   |-- page.tsx
+|   |   `-- sitemap.ts
+|   |-- components
+|   |   |-- layout
+|   |   |-- motion
+|   |   |-- navigation
+|   |   |-- projects
+|   |   |-- sections
+|   |   `-- ui
+|   |-- content
+|   |   |-- pages.ts
+|   |   `-- portfolio.ts
+|   `-- lib
+|       |-- icon-map.ts
+|       |-- seo.ts
+|       `-- utils.ts
+`-- tests
 ```
 
 ## Notes
 
 - Dark mode is the default visual style.
-- Anchor navigation uses smooth scrolling and sticky header behavior.
-- The landing page is intentionally data-driven so the content can be swapped without changing section layouts.
-- The testimonials area is a placeholder section ready for real quotes later.
+- The homepage remains conversion-focused with sticky anchor navigation.
+- Detail routes exist for services, projects, experience, about, and contact.
+- Project cards are structured to support detail pages and future modal or CMS expansion.
+- Playwright covers the key responsive breakpoints requested for UI QA.

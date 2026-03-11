@@ -5,6 +5,12 @@ export type NavItem = {
   href: `#${string}`;
 };
 
+export type GlobalActionSet = {
+  primary: CtaLink;
+  secondary: CtaLink;
+  tertiary: CtaLink;
+};
+
 export type Metric = {
   value: string;
   label: string;
@@ -13,6 +19,8 @@ export type Metric = {
 export type CtaLink = {
   label: string;
   href: string;
+  download?: boolean;
+  newTab?: boolean;
 };
 
 export type SocialLink = {
@@ -32,6 +40,11 @@ export type HeroSignal = {
   items: string[];
 };
 
+export type ProjectDetailSection = {
+  title: string;
+  description: string;
+};
+
 export type HighlightItem = {
   title: string;
   detail: string;
@@ -46,9 +59,9 @@ export type SectionIntro = {
 
 export type Service = {
   title: string;
-  description: string;
+  valueProp: string;
   icon: IconName;
-  bullets: string[];
+  outcomes: string[];
 };
 
 export type SkillGroup = {
@@ -59,13 +72,19 @@ export type SkillGroup = {
 };
 
 export type Project = {
+  slug: string;
+  icon: IconName;
   name: string;
   category: string;
+  positioning: string;
   summary: string;
   impact: string;
-  timeline: string;
   stack: string[];
-  outcomes: string[];
+  challenges: string[];
+  detailIntro: string;
+  detailSections: ProjectDetailSection[];
+  results: string[];
+  metric?: Metric;
   ctaLabel: string;
   ctaHref: string;
 };
@@ -74,7 +93,7 @@ export type ExperienceItem = {
   company: string;
   role: string;
   period: string;
-  location: string;
+  summary: string;
   highlights: string[];
 };
 
@@ -123,6 +142,8 @@ export type AboutContent = SectionIntro & {
 };
 
 export type ServicesContent = SectionIntro & {
+  leadIn: string;
+  audienceSignals: string[];
   items: Service[];
 };
 
@@ -148,6 +169,7 @@ export type ContactContent = SectionIntro & {
   cardDescription: string;
   primaryCta: CtaLink;
   secondaryCta: CtaLink;
+  resumeCta: CtaLink;
   methodsTitle: string;
   methodsDescription: string;
   processTitle: string;
@@ -162,44 +184,55 @@ export const siteConfig = {
   speciality: "Architecture, Native Integrations, and Delivery Systems",
   location: "Remote, India",
   availability: "Available for freelance, contract, and select full-time roles",
-  email: "iamsnjt@gmail.com",
+  email: "hello@yourdomain.com",
+  linkedinUrl: "https://linkedin.com/in/your-linkedin-handle",
   githubUrl: "https://github.com/snjtiam",
+  resumeUrl: "/sanjit-soreng-resume-placeholder.txt",
   url: "https://snjtiam.github.io/portfolio",
-  hireUrl: "mailto:iamsnjt@gmail.com?subject=React%20Native%20Inquiry",
+  hireUrl: "mailto:hello@yourdomain.com?subject=React%20Native%20Inquiry",
+  seoTitle:
+    "Senior React Native Engineer | Scalable Mobile App Development, Architecture, Performance, and Native Integrations",
+  seoDescription:
+    "Senior React Native Engineer specializing in scalable mobile app development, mobile architecture, performance optimization, native integrations, and production-grade Android and iOS solutions.",
   description:
-    "Senior React Native engineer with 6 years of experience building scalable, high-performance mobile products for iOS and Android across healthcare, IoT, video, fintech, and workflow software.",
+    "Senior React Native Engineer specializing in scalable mobile app development, mobile architecture, performance optimization, native integrations, and production-grade Android and iOS solutions.",
   footerHeading:
-    "Architecture-led React Native engineering for products that need to scale cleanly.",
+    "Bring in senior React Native engineering before mobile complexity starts slowing the product down.",
   footerStatement:
-    "I help teams ship maintainable mobile apps with stronger architecture, native integrations, performance work, and dependable release systems.",
-  mobileNavEyebrow: "Senior mobile engineering partner",
+    "I help teams ship scalable mobile systems with cleaner architecture, stronger native integrations, better runtime performance, and steadier production delivery.",
+  mobileNavEyebrow: "Senior React Native partner",
   mobileNavDescription:
-    "React Native architecture, native integrations, and release discipline for teams that need steady senior ownership.",
+    "Architecture, performance, native integrations, and release discipline for teams building serious mobile products.",
 } as const;
 
-export const navItems: NavItem[] = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-  { label: "Why Me", href: "#why-work-with-me" },
-  { label: "Contact", href: "#contact" },
-];
+export const navigationCtas: GlobalActionSet = {
+  primary: {
+    label: "Let's work together",
+    href: "#contact",
+  },
+  secondary: {
+    label: "View projects",
+    href: "#projects",
+  },
+  tertiary: {
+    label: "Send an email",
+    href: siteConfig.hireUrl,
+  },
+};
 
 export const heroContent: HeroContent = {
   badge: siteConfig.availability,
-  contextLabel: "React Native Architecture",
+  contextLabel: "Scalable React Native Systems",
   roleLine: `${siteConfig.role} / ${siteConfig.speciality}`,
-  headline: "Senior React Native engineering for mobile products that need to scale cleanly.",
+  headline: "Scalable React Native systems for teams that need speed without technical drag.",
   intro:
-    "I build and improve React Native apps for iOS and Android with strong architecture, native integrations, and delivery systems teams can rely on in production.",
+    "I design, build, and improve React Native apps for iOS and Android with stronger architecture, sharper performance, and native integrations that hold up in production.",
   secondaryIntro:
-    "My work spans healthcare, IoT, video streaming, fintech, and task management products, including apps used by 50,000+ people and performance improvements of around 20% on key flows.",
+    "Startups, product teams, and agencies bring me in when the app is growing, the codebase is getting heavier, or the platform layer starts to matter.",
   highlights: [
-    "6 years shipping cross-platform apps in production",
-    "Trusted with architecture ownership, native integrations, and release-critical work",
-    "Reusable SDKs, offline modules, and mobile systems designed for long-term maintainability",
+    "Architecture ownership from planning through release",
+    "Native integrations, TurboModules, JSI, and platform-level problem solving",
+    "Production-ready systems designed for scale, iteration, and maintainability",
   ],
   metrics: [
     { value: "6+", label: "Years building React Native apps in production" },
@@ -208,19 +241,19 @@ export const heroContent: HeroContent = {
   ],
   signals: [
     {
-      title: "Where I add leverage",
+      title: "What I solve",
       items: [
-        "Architecture decisions that keep codebases maintainable as teams and features grow",
-        "Native integrations, TurboModules, JSI, and bridge work when the product needs platform depth",
-        "Performance, offline behavior, and release quality treated as part of delivery, not cleanup",
+        "Feature velocity without letting the codebase turn brittle",
+        "Native depth when product requirements outgrow standard libraries",
+        "Production readiness across performance, release quality, and long-term maintainability",
       ],
     },
     {
       title: "How I work",
       items: [
-        "Hands-on with product, design, QA, and backend teams from planning through release",
-        "Clear communication around tradeoffs, technical risk, and delivery priorities",
-        "Mentorship and reusable engineering patterns that help the rest of the team move faster",
+        "Direct collaboration with founders, product, design, QA, and backend teams",
+        "Clear technical judgment, realistic tradeoffs, and steady execution",
+        "Senior ownership that reduces oversight instead of creating more of it",
       ],
     },
   ],
@@ -228,34 +261,34 @@ export const heroContent: HeroContent = {
     {
       title: "Scalable mobile architecture",
       description:
-        "Clear module boundaries, predictable state, and foundations that stay workable as product scope expands.",
+        "Architecture that keeps the app extensible as product scope, traffic, and team size grow.",
       icon: "Layers3",
     },
     {
       title: "Native depth when the app needs it",
       description:
-        "TurboModules, JSI, bridging, and SDK integrations handled with pragmatic platform-level decision making.",
+        "Custom native work, SDK integrations, and bridge-level decisions handled cleanly and pragmatically.",
       icon: "Blocks",
     },
     {
       title: "Performance and release reliability",
       description:
-        "Profiling, optimization, CI/CD, and production release discipline built into the way the app ships.",
+        "Performance, CI/CD, and release readiness built into delivery from the start, not added later.",
       icon: "Zap",
     },
   ],
-  panelBadge: "Architecture-led delivery",
+  panelBadge: "Built for production",
   panelTitle:
-    "Senior mobile execution for products where reliability and maintainability matter as much as feature speed.",
+    "Mobile engineering for products that need to scale, ship reliably, and stay maintainable.",
   panelDescription:
-    "I help teams ship cleanly across iOS and Android, whether that means stabilizing an existing codebase, building new capabilities, or creating the internal systems that keep releases predictable.",
+    "I help teams move from MVP momentum or inherited complexity to a cleaner React Native foundation, stronger platform integrations, and fewer production surprises.",
   floatingLabels: ["TurboModules / JSI", "CI/CD & releases"],
   primaryCta: {
-    label: "Start a conversation",
-    href: siteConfig.hireUrl,
+    label: "Let's work together",
+    href: "#contact",
   },
   secondaryCta: {
-    label: "See selected work",
+    label: "View projects",
     href: "#projects",
   },
 };
@@ -290,19 +323,19 @@ export const highlightsStrip: HighlightItem[] = [
 
 export const aboutContent: AboutContent = {
   eyebrow: "About",
-  title: "I build mobile systems that hold up under real product pressure.",
+  title: "Senior React Native engineering for products that need more than feature delivery.",
   description:
-    "Hands-on React Native engineering for teams that need architecture ownership, reliable delivery, and a codebase that can keep growing.",
+    "I help teams turn ambitious mobile products into stable, scalable systems with better architecture, stronger delivery, and codebases that stay workable as the business grows.",
   paragraphs: [
-    "For the last 6 years, I have built React Native apps across healthcare, IoT, video streaming, fintech, and task management. My role typically sits at the intersection of architecture, implementation, and delivery: shaping patterns, building the hard parts, and keeping releases dependable.",
-    "That work has included reusable internal SDKs, remote configuration systems, offline-capable modules, scheduling and reminder flows, survey engines, healthcare data transformation pipelines, and time zone aware visualizations. I am comfortable moving from product discussions to native integrations to release automation without leaving a brittle codebase behind.",
+    "For the last 6 years, I have worked across healthcare, IoT, video streaming, fintech, and task management products where the mobile app carried real business weight. My role has consistently been to own the parts that most affect scale: app structure, platform complexity, performance, and release quality.",
+    "That has included internal SDKs, remote configuration platforms, offline-capable modules, scheduling systems, FHIR transformation layers, and custom data-heavy interfaces. I work comfortably across product discovery, implementation, native integration, testing, and release, with a bias toward codebases teams can actually keep shipping in.",
   ],
   focusAreas: [
-    "Architecture ownership",
+    "Architecture leadership",
     "Performance optimization",
     "Native integrations",
     "Cross-functional delivery",
-    "Mentoring engineers",
+    "Team enablement",
   ],
   stats: [
     { value: "50,000+", label: "users reached across shipped mobile products" },
@@ -313,74 +346,82 @@ export const aboutContent: AboutContent = {
 
 export const servicesContent: ServicesContent = {
   eyebrow: "Services",
-  title: "Support shaped around the parts of mobile work that are hard to fake.",
+  title: "Senior React Native support for teams building past the prototype stage.",
   description:
-    "I can join as a hands-on senior engineer, architecture lead, or delivery partner depending on where the product is stuck.",
+    "For founders, CTOs, product companies, agencies, and recruiters looking for someone who can own both the hard technical decisions and the delivery behind them.",
+  leadIn:
+    "I help teams move from early traction to production-ready mobile systems with cleaner architecture, better runtime behavior, stronger platform integrations, and steadier release execution.",
+  audienceSignals: [
+    "Founder-led product teams",
+    "Startups scaling past MVP",
+    "Agencies needing senior delivery support",
+    "Recruiters and hiring managers evaluating long-term fit",
+  ],
   items: [
     {
-      title: "End-to-end React Native delivery",
-      description:
-        "Build or extend mobile products with clear foundations, polished UX execution, and production-ready delivery across Android and iOS.",
+      title: "React Native app development",
+      valueProp:
+        "Build a polished cross-platform product on a foundation that supports the next stage of growth, not just the first launch.",
       icon: "Smartphone",
-      bullets: [
-        "Greenfield app setup or senior support on an active codebase",
-        "Feature delivery that balances product speed with long-term maintainability",
-        "Hands-on ownership from implementation to store release",
+      outcomes: [
+        "Faster delivery without accumulating avoidable mobile debt",
+        "Clearer structure for features, navigation, and state from day one",
+        "Senior implementation ownership through QA and release",
       ],
     },
     {
-      title: "Architecture and codebase scaling",
-      description:
-        "Structure React Native applications so teams can keep shipping without compounding avoidable technical debt.",
+      title: "Scalable mobile architecture",
+      valueProp:
+        "Set the app up to scale across features, engineers, and releases without sacrificing development speed.",
       icon: "Layers3",
-      bullets: [
-        "Module boundaries, navigation structure, and state ownership",
-        "Reusable patterns that support larger teams and larger products",
-        "Refactors that improve clarity without stalling delivery",
+      outcomes: [
+        "Clear boundaries for navigation, state, and feature ownership",
+        "Reusable patterns that keep delivery consistent as the product expands",
+        "A codebase that is easier to onboard into, maintain, and extend safely",
       ],
     },
     {
-      title: "Performance and reliability optimization",
-      description:
-        "Improve startup time, rendering, responsiveness, and runtime stability where users actually feel the difference.",
+      title: "Mobile performance optimization",
+      valueProp:
+        "Remove lag, startup friction, and unstable runtime behavior where users feel it first.",
       icon: "Zap",
-      bullets: [
-        "Profiling to isolate bottlenecks before making changes",
-        "UI, memory, and data-flow optimizations on critical screens",
-        "Crash reduction and stronger release confidence in production",
+      outcomes: [
+        "Measured bottleneck analysis instead of guesswork-led optimization",
+        "Smoother behavior on data-heavy, animated, and real-time screens",
+        "Higher release confidence through fewer regressions and more predictable runtime behavior",
       ],
     },
     {
-      title: "Native integrations, TurboModules, and bridges",
-      description:
-        "Handle the React Native to native boundary confidently when product requirements go beyond standard libraries.",
+      title: "Native module and platform integrations",
+      valueProp:
+        "Bridge React Native and native code cleanly when the product needs more than standard packages can offer.",
       icon: "Blocks",
-      bullets: [
-        "Custom bridges, TurboModules, JSI, and native SDK integration",
-        "Device capabilities, auth, notifications, media, and domain-specific SDKs",
-        "Implementation decisions aligned with long-term maintainability",
+      outcomes: [
+        "Safer integrations for SDKs, device features, authentication, notifications, and media flows",
+        "TurboModules, JSI, and bridging work without leaving the app brittle",
+        "Platform decisions made with maintainability and release stability in mind",
       ],
     },
     {
-      title: "Offline, realtime, and workflow systems",
-      description:
-        "Build the operational layers that make mobile apps useful in imperfect network conditions and complex workflows.",
-      icon: "Workflow",
-      bullets: [
-        "Offline-capable modules, sync recovery, and queue-safe actions",
-        "Scheduling, reminders, surveys, and time zone aware experiences",
-        "Realtime updates with REST, GraphQL, or WebSocket-backed systems",
-      ],
-    },
-    {
-      title: "Release engineering and modernization",
-      description:
-        "Stabilize older apps and reduce release friction with better pipelines, observability, and delivery practices.",
+      title: "App modernization and refactoring",
+      valueProp:
+        "Untangle older React Native codebases into something the team can ship on confidently again.",
       icon: "Wrench",
-      bullets: [
-        "Fastlane, CI/CD, and repeatable release workflows",
-        "Modernization plans for aging React Native stacks",
-        "Safer production rollout processes for active mobile products",
+      outcomes: [
+        "Less technical drag while keeping feature work moving",
+        "Safer migration paths for legacy architecture, outdated modules, and fragile flows",
+        "Better maintainability without a disruptive all-at-once rebuild",
+      ],
+    },
+    {
+      title: "Release support, maintenance, and long-term product engineering",
+      valueProp:
+        "Keep the app healthy after launch with stronger release systems, production maintenance, and hands-on engineering continuity.",
+      icon: "Workflow",
+      outcomes: [
+        "More dependable store releases, CI/CD flows, and rollout processes",
+        "Ongoing support for active products that need fixes, iteration, and architectural care",
+        "Longer-term mobile engineering ownership instead of reactive patchwork after launch",
       ],
     },
   ],
@@ -474,143 +515,354 @@ export const skillsContent: SkillsContent = {
 };
 
 export const projectsContent: ProjectsContent = {
-  eyebrow: "Representative Projects",
-  title: "Case-study style examples of the product and platform work I usually own.",
+  eyebrow: "Selected Projects",
+  title: "Selected projects shaped by scale, platform complexity, and production pressure.",
   description:
-    "These summaries reflect the kinds of systems I have built across healthcare, IoT, streaming, fintech, and task-focused products.",
+    "A few representative builds that show how I approach architecture, performance, native depth, and delivery without exposing client-sensitive details.",
   items: [
     {
-      name: "CarePath Mobile",
-      category: "Healthcare / patient engagement",
+      slug: "internal-react-native-sdk-platform",
+      icon: "Code2",
+      name: "Internal React Native SDK Platform",
+      category: "Platform engineering",
+      positioning:
+        "A shared mobile foundation that reduced duplicated work across multiple React Native products.",
       summary:
-        "Led React Native architecture for a care coordination app with reminders, surveys, care plans, and FHIR-backed data flows.",
+        "Built an internal SDK covering navigation patterns, analytics hooks, shared UI contracts, and native integration wrappers so teams could start from a stable base instead of rebuilding the same infrastructure.",
       impact:
-        "Supported a growing patient user base with stronger release reliability and faster performance on key workflows.",
-      timeline: "Architecture + long-term feature delivery",
-      stack: ["React Native", "TypeScript", "Redux Toolkit", "FHIR", "Firebase", "Fastlane"],
-      outcomes: [
-        "Built transformation layers that turned complex FHIR resources into UI-safe mobile models",
-        "Shipped scheduling, reminders, and survey flows with offline-aware behavior",
-        "Introduced reusable patterns and release automation that reduced regression risk",
+        "Improved delivery consistency, shortened setup time for new apps, and made cross-app maintenance substantially easier.",
+      stack: ["React Native", "TypeScript", "TurboModules", "JSI", "Native Bridges", "CI/CD"],
+      challenges: [
+        "Designed stable public APIs so product teams could move fast without leaking internal implementation details",
+        "Handled native module boundaries and versioning without creating upgrade pain across consuming apps",
+        "Created extension points for app-specific behavior while keeping the shared layer maintainable",
       ],
-      ctaLabel: "Discuss similar work",
-      ctaHref: "#contact",
+      detailIntro:
+        "This work treated shared mobile infrastructure as a product in its own right. The goal was to stop rebuilding the same architectural primitives across apps and create a versioned foundation teams could confidently extend.",
+      detailSections: [
+        {
+          title: "Problem",
+          description:
+            "Multiple React Native applications were solving the same infrastructure concerns independently, which increased maintenance cost, slowed onboarding, and made release behavior inconsistent across products.",
+        },
+        {
+          title: "Approach",
+          description:
+            "I designed a reusable SDK layer for navigation contracts, analytics instrumentation, feature bootstrapping, and native wrappers, with stable APIs and extension points for product-specific behavior.",
+        },
+        {
+          title: "Delivery",
+          description:
+            "Versioning, upgrade boundaries, and internal documentation were treated as part of the engineering work so product teams could adopt changes without disruption.",
+        },
+      ],
+      results: [
+        "Reduced duplicated engineering effort across multiple codebases",
+        "Made new app setup faster and more consistent",
+        "Created cleaner long-term maintenance paths for shared mobile behavior",
+      ],
+      metric: {
+        value: "Multi-app",
+        label: "shared foundation used across multiple React Native codebases",
+      },
+      ctaLabel: "View case study",
+      ctaHref: "/projects/internal-react-native-sdk-platform",
     },
     {
-      name: "DeviceOps Companion",
-      category: "IoT / connected device operations",
+      slug: "remote-configuration-platform",
+      icon: "Workflow",
+      name: "Remote Configuration Platform",
+      category: "Release control",
+      positioning:
+        "A typed release control layer for shipping changes more safely between app-store releases.",
       summary:
-        "Delivered a companion app for connected devices with pairing flows, live status, remote configuration, and regional usage views.",
+        "Designed a remote config platform with defaults, kill switches, rollout targeting, and offline-safe caching to give product and operations teams controlled flexibility in production.",
       impact:
-        "Reduced setup friction and improved operational visibility for teams managing devices across multiple time zones.",
-      timeline: "Product build + platform integration",
+        "Reduced release risk, accelerated experimentation, and cut the need for avoidable hotfix updates.",
       stack: [
         "React Native",
         "TypeScript",
+        "Firebase Remote Config",
         "Zustand",
-        "Native Modules",
-        "Device SDKs",
         "REST APIs",
+        "Fastlane",
       ],
-      outcomes: [
-        "Handled native integrations and bridge work for device setup and live telemetry",
-        "Built retry-safe sync flows for intermittent connectivity and field usage",
-        "Added time zone aware visualizations and configuration controls for multi-region deployments",
+      challenges: [
+        "Enforced typed config contracts so invalid payloads could not silently break production behavior",
+        "Built deterministic fallback logic for offline use, stale values, and first-launch defaults",
+        "Separated release controls from feature logic to keep the system auditable and easy to extend",
       ],
-      ctaLabel: "Discuss similar work",
-      ctaHref: "#contact",
+      detailIntro:
+        "This platform gave product and operations teams controlled flexibility without compromising app stability. The emphasis was on release safety, predictable fallbacks, and clear ownership boundaries.",
+      detailSections: [
+        {
+          title: "Problem",
+          description:
+            "Teams needed to change product behavior quickly in production, but relying on app-store releases for operational switches created unnecessary risk and response delays.",
+        },
+        {
+          title: "Approach",
+          description:
+            "I built a typed remote configuration system with defaults, kill switches, rollout targeting, and cache-aware evaluation so app behavior stayed deterministic even with stale or missing config.",
+        },
+        {
+          title: "Delivery",
+          description:
+            "The final system kept config contracts separate from feature code, which improved auditability and made future extensions safer for both engineers and product stakeholders.",
+        },
+      ],
+      results: [
+        "Lowered release risk for production rollouts",
+        "Enabled faster experimentation and operational response",
+        "Reduced the need for emergency app updates",
+      ],
+      ctaLabel: "View case study",
+      ctaHref: "/projects/remote-configuration-platform",
     },
     {
-      name: "StreamRoom Mobile",
-      category: "Video streaming / realtime engagement",
+      slug: "healthcare-data-collection-fhir-transformation",
+      icon: "ShieldCheck",
+      name: "Healthcare Data Collection & FHIR Transformation",
+      category: "Healthcare workflows",
+      positioning:
+        "A mobile data pipeline that made complex healthcare workflows usable, reliable, and app-safe.",
       summary:
-        "Built mobile experiences around live sessions, chat, and subscription features where perceived performance and responsiveness mattered.",
+        "Built assessment, reminder, survey, and care workflow experiences backed by FHIR transformation layers that insulated the mobile app from backend complexity.",
       impact:
-        "Improved session stability and mobile responsiveness for a realtime product used by a broad consumer audience.",
-      timeline: "Realtime feature expansion",
-      stack: ["React Native", "TypeScript", "GraphQL", "WebSockets", "Reanimated", "Firebase"],
-      outcomes: [
-        "Optimized rendering on feed, chat, and session surfaces to improve responsiveness",
-        "Delivered realtime presence and messaging with graceful reconnection behavior",
-        "Created reusable UI and state patterns for faster rollout of new engagement features",
+        "Improved data quality, simplified client-side logic, and supported production healthcare workflows with fewer failure points.",
+      stack: ["React Native", "TypeScript", "Redux Toolkit", "FHIR", "Firebase", "REST APIs"],
+      challenges: [
+        "Normalized deeply nested FHIR resources into predictable mobile view models and write-back payloads",
+        "Handled offline-capable collection, validation, and retry flows for unstable network conditions",
+        "Supported role-sensitive workflows without duplicating domain logic across screens",
       ],
-      ctaLabel: "Discuss similar work",
-      ctaHref: "#contact",
+      detailIntro:
+        "The core challenge was translating healthcare data complexity into mobile workflows that remained understandable for end users and maintainable for engineers. The solution centered on clear transformation boundaries and resilient offline behavior.",
+      detailSections: [
+        {
+          title: "Problem",
+          description:
+            "FHIR resources and domain workflows were too complex to expose directly to the client layer, especially in forms, surveys, reminders, and role-based care interactions.",
+        },
+        {
+          title: "Approach",
+          description:
+            "I built transformation layers that mapped backend resources into app-safe models, then paired them with validation, retry, and offline collection logic for production healthcare usage.",
+        },
+        {
+          title: "Delivery",
+          description:
+            "The architecture reduced duplication across screens, kept role-sensitive logic consistent, and made it easier to evolve workflows without pushing schema complexity into the UI layer.",
+        },
+      ],
+      results: [
+        "Improved reliability of mobile healthcare data collection",
+        "Reduced client-side transformation complexity",
+        "Supported production workflows in a regulated, data-heavy domain",
+      ],
+      metric: {
+        value: "50,000+",
+        label: "users supported across shipped mobile products in regulated and data-heavy domains",
+      },
+      ctaLabel: "View case study",
+      ctaHref: "/projects/healthcare-data-collection-fhir-transformation",
     },
     {
-      name: "LedgerFlow",
-      category: "Fintech / transaction-heavy mobile product",
+      slug: "data-visualization-custom-calendar-system",
+      icon: "CalendarDays",
+      name: "Data Visualization & Custom Calendar System",
+      category: "Data-heavy product UX",
+      positioning:
+        "A custom calendar and visualization layer for data-heavy mobile workflows that standard libraries could not handle well.",
       summary:
-        "Modernized a fintech app with stronger state boundaries, safer releases, and better handling of complex financial workflows.",
+        "Designed time zone aware calendar views and bespoke visual components for dense operational data, regional rollups, and drill-down analysis on mobile.",
       impact:
-        "Raised delivery confidence on critical flows and reduced friction on transaction-heavy mobile screens.",
-      timeline: "Modernization and reliability work",
-      stack: ["React Native", "TypeScript", "Redux Toolkit", "GraphQL", "Supabase", "CI/CD"],
-      outcomes: [
-        "Refined state management and error handling around sensitive financial interactions",
-        "Introduced rollout controls and observability for safer production releases",
-        "Lowered maintenance overhead with shared modules and clearer architecture rules",
+        "Made complex schedules and trends easier to interpret while keeping rendering performance under control.",
+      stack: ["React Native", "TypeScript", "Reanimated", "REST APIs", "Supabase", "Custom UI"],
+      challenges: [
+        "Resolved time zone and daylight-saving edge cases so data appeared in the correct local context",
+        "Optimized data-heavy rendering paths to keep scrolling and drill-down interactions smooth",
+        "Built reusable primitives for calendars, legends, and stateful filters instead of one-off visual widgets",
       ],
-      ctaLabel: "Discuss similar work",
-      ctaHref: "#contact",
+      detailIntro:
+        "This project focused on turning heavy, time-sensitive data into a mobile experience that stayed readable and performant. Off-the-shelf calendar and charting patterns were not enough for the product requirements.",
+      detailSections: [
+        {
+          title: "Problem",
+          description:
+            "The product needed custom calendar and insight views for dense operational data, regional rollups, and time-sensitive interactions where standard UI libraries were too rigid.",
+        },
+        {
+          title: "Approach",
+          description:
+            "I designed reusable calendar, filtering, and visualization primitives with careful handling for time zones, daylight-saving changes, and heavy client-side rendering.",
+        },
+        {
+          title: "Delivery",
+          description:
+            "Performance profiling shaped rendering decisions, while the shared primitives made it possible to extend the system without creating one-off visualization logic on every screen.",
+        },
+      ],
+      results: [
+        "Made dense schedule and trend data easier to interpret on mobile",
+        "Improved runtime behavior on heavy visualization screens",
+        "Created reusable UI primitives for future product expansion",
+      ],
+      metric: {
+        value: "~20%",
+        label: "performance improvement on key data-heavy screens after profiling and optimization",
+      },
+      ctaLabel: "View case study",
+      ctaHref: "/projects/data-visualization-custom-calendar-system",
     },
     {
-      name: "TaskPilot",
-      category: "Task management / workflow execution",
+      slug: "local-scheduling-notification-engine",
+      icon: "Clock3",
+      name: "Local Scheduling & Notification Engine",
+      category: "Workflow automation",
+      positioning:
+        "A notification and reminder engine built for real-world edge cases, not ideal device behavior.",
       summary:
-        "Built scheduling, reminders, and field-task workflows for teams that needed dependable mobile behavior in daily operations.",
+        "Built device-side scheduling with persistence, recurrence logic, quiet hours, and backend sync coordination so reminders stayed reliable across offline periods, restarts, and time changes.",
       impact:
-        "Improved completion visibility and reduced missed follow-ups with stronger mobile workflow design.",
-      timeline: "Operational workflow delivery",
-      stack: ["React Native", "TypeScript", "Zustand", "Supabase", "WebSockets", "Fastlane"],
-      outcomes: [
-        "Implemented scheduling and reminder systems with time zone aware behavior",
-        "Delivered offline-capable task capture with sync recovery for unstable networks",
-        "Collaborated closely with product, design, and QA to keep delivery predictable",
+        "Increased workflow reliability and reduced support issues caused by missed or incorrectly timed notifications.",
+      stack: [
+        "React Native",
+        "TypeScript",
+        "Native Modules",
+        "Zustand",
+        "Local Storage",
+        "Notifications",
       ],
-      ctaLabel: "Discuss similar work",
-      ctaHref: "#contact",
+      challenges: [
+        "Handled recurrence rules, local time changes, and app restarts without double-firing notifications",
+        "Coordinated server intent with device execution so reminders stayed accurate in offline and reconnect scenarios",
+        "Built guardrails around throttling, retries, and cancellation for user-trust-sensitive flows",
+      ],
+      detailIntro:
+        "Reliable reminder systems are mostly about edge cases. This project focused on the device-side logic needed to keep scheduling trustworthy across offline periods, app restarts, and time changes.",
+      detailSections: [
+        {
+          title: "Problem",
+          description:
+            "Missed, duplicated, or badly timed notifications create immediate trust issues, especially when reminders depend on local device state and changing user context.",
+        },
+        {
+          title: "Approach",
+          description:
+            "I built a local scheduling engine with persistence, recurrence rules, quiet hours, sync coordination, and recovery logic so delivery behavior stayed predictable under non-ideal conditions.",
+        },
+        {
+          title: "Delivery",
+          description:
+            "The final system balanced user trust, operational control, and maintainability, with clear guardrails around retries, cancellation, and time zone shifts.",
+        },
+      ],
+      results: [
+        "Improved reliability of scheduled mobile workflows",
+        "Reduced support issues tied to notification edge cases",
+        "Created a reusable engine for reminder-driven product experiences",
+      ],
+      ctaLabel: "View case study",
+      ctaHref: "/projects/local-scheduling-notification-engine",
+    },
+    {
+      slug: "iot-video-streaming-realtime-app-solutions",
+      icon: "Globe2",
+      name: "IoT, Video Streaming & Real-time App Solutions",
+      category: "Realtime systems",
+      positioning:
+        "Real-time mobile systems for connected devices, live state, chat, and streaming-adjacent experiences.",
+      summary:
+        "Delivered React Native flows for device telemetry, session state, messaging, and network-heavy interactions where reliability depended on disciplined connection management and platform awareness.",
+      impact:
+        "Improved resilience under unstable networks and made live product behavior clearer for end users.",
+      stack: [
+        "React Native",
+        "TypeScript",
+        "WebSockets",
+        "GraphQL",
+        "Native Bridges",
+        "Firebase",
+      ],
+      challenges: [
+        "Managed connection lifecycle, reconnection, and back-pressure across real-time mobile surfaces",
+        "Balanced responsiveness with battery, memory, and background-state constraints on iOS and Android",
+        "Integrated native and network-heavy capabilities without letting the codebase devolve into special cases",
+      ],
+      detailIntro:
+        "Real-time mobile work adds pressure on every layer of the stack: connection handling, device constraints, UI responsiveness, and operational stability. This project area required disciplined engineering rather than optimistic assumptions.",
+      detailSections: [
+        {
+          title: "Problem",
+          description:
+            "Connected devices, streaming-adjacent flows, telemetry, and live messaging create high-frequency state changes that can quickly become unstable on mobile if connection management is weak.",
+        },
+        {
+          title: "Approach",
+          description:
+            "I built React Native systems around explicit connection lifecycle handling, back-pressure awareness, reconnection behavior, and careful boundaries between native capabilities and realtime application logic.",
+        },
+        {
+          title: "Delivery",
+          description:
+            "The result was a more resilient product experience under unstable connectivity, with clearer live state for users and less hidden complexity in the codebase.",
+        },
+      ],
+      results: [
+        "Improved resilience in network-heavy product flows",
+        "Made live device and session behavior easier for users to understand",
+        "Reduced fragility in realtime mobile architecture",
+      ],
+      ctaLabel: "View case study",
+      ctaHref: "/projects/iot-video-streaming-realtime-app-solutions",
     },
   ],
 };
 
 export const experienceContent: ExperienceContent = {
   eyebrow: "Experience",
-  title: "Six years of React Native work across product teams, consulting, and delivery ownership.",
+  title: "An experience timeline shaped by architecture ownership, domain complexity, and production delivery.",
   description:
-    "A concise career snapshot focused on the kind of responsibility I have taken on, rather than a resume-style employer list.",
+    "From January 2020 through January 2026, I worked across healthcare, realtime, media, and platform-heavy mobile products, steadily taking on more responsibility for architecture, integrations, reliability, and team guidance.",
   items: [
     {
-      company: "Independent Consulting & Contract Work",
-      role: "Senior React Native Engineer",
-      period: "2023 - Present",
-      location: "Remote",
+      company: "Mindbowser Infosolution",
+      role: "Senior Software Engineer",
+      period: "Apr 2022 - Jan 2026",
+      summary:
+        "Led senior React Native delivery across healthcare and product engineering initiatives, owning architecture decisions, native integrations, release quality, and maintainability for production mobile systems.",
       highlights: [
-        "Partner with founders, agencies, and hiring teams on delivery-critical React Native work across healthcare, fintech, IoT, and workflow products.",
-        "Own architecture decisions, native integrations, performance work, and release readiness from planning through production.",
-        "Build reusable foundations, mentor engineers, and reduce the long-term cost of mobile delivery.",
+        "Owned mobile architecture for complex React Native applications, setting patterns for modular features, reusable components, internal SDKs, and long-term codebase scalability.",
+        "Delivered healthcare interoperability workflows with FHIR transformation layers, app-safe data models, and reliable form, survey, and care-path experiences.",
+        "Built and maintained real-time product features including chat, live data flows, and media-heavy experiences across video, uploads, and streaming-adjacent surfaces.",
+        "Handled native integrations and deeper platform work for camera, maps, uploads, device capabilities, and modern React Native bridge or TurboModule-style requirements.",
+        "Improved performance and regression safety through profiling, test coverage, release discipline, and mentoring junior engineers on maintainable mobile engineering practices.",
       ],
     },
     {
-      company: "Product Engineering Roles",
-      role: "React Native Engineer",
-      period: "2021 - 2023",
-      location: "Remote / Hybrid",
-      highlights: [
-        "Shipped cross-platform features for consumer and B2B mobile products serving tens of thousands of users.",
-        "Built modules for offline behavior, realtime updates, scheduling, reminders, and data-heavy interfaces.",
-        "Worked closely with product, design, QA, and backend teams to translate requirements into reliable mobile systems.",
-      ],
-    },
-    {
-      company: "Mobile Engineering Foundations",
+      company: "Audertec Solutions",
       role: "Software Engineer",
-      period: "2020 - 2021",
-      location: "On-site / Hybrid",
+      period: "May 2020 - Apr 2022",
+      summary:
+        "Built and maintained cross-platform mobile applications with a focus on dependable feature delivery, production maintenance, native capabilities, and cleaner implementation patterns.",
       highlights: [
-        "Built early React Native features and contributed to store releases for both Android and iOS.",
-        "Improved code quality and team velocity through reusable components, stronger state management, and clearer engineering practices.",
-        "Developed the product and maintainability judgment that now shapes senior-level execution.",
+        "Implemented reusable UI components and shared feature patterns that reduced repeated engineering effort across Android and iOS delivery.",
+        "Built real-time chat, media, and upload flows while coordinating closely with backend APIs and active production systems.",
+        "Integrated platform-specific capabilities such as camera, maps, and device workflows without allowing the React Native layer to become fragmented.",
+        "Contributed to performance improvements, bug fixing, testing support, and release maintenance for actively used mobile products.",
+      ],
+    },
+    {
+      company: "SASA Infotech",
+      role: "Software Engineer",
+      period: "Jan 2020 - Mar 2020",
+      summary:
+        "Built the foundation of my mobile engineering practice through hands-on product development, reusable UI work, and early exposure to production release expectations.",
+      highlights: [
+        "Developed React Native screens, API-driven features, and reusable components with a focus on clean implementation and consistent UX behavior.",
+        "Supported bug fixing, QA handoff, and release preparation for Android and iOS builds in an active delivery environment.",
+        "Built early discipline around regression safety, maintainability, and production deployment that shaped later senior engineering ownership.",
       ],
     },
   ],
@@ -618,38 +870,38 @@ export const experienceContent: ExperienceContent = {
 
 export const whyWorkWithMeContent: WhyWorkWithMeContent = {
   eyebrow: "Why Work With Me",
-  title: "Senior engineering value without the drama or the hand-holding requirement.",
+  title: "Why teams bring me in when mobile complexity starts getting expensive.",
   description:
-    "I focus on making mobile products easier to ship, easier to scale, and easier for the rest of the team to work in.",
+    "I bring senior React Native judgment to architecture, performance, native work, and delivery, while staying practical and easy to work with.",
   items: [
     {
-      title: "Architecture ownership, not just implementation",
+      title: "Architecture ownership, not ticket execution",
       description:
-        "I think through app structure, state boundaries, integrations, and release implications instead of treating work as isolated tickets.",
+        "I make structural decisions that keep the app easier to extend, test, and release as product scope grows.",
       icon: "Layers3",
     },
     {
-      title: "Comfortable at the React Native and native boundary",
+      title: "Native depth without platform chaos",
       description:
-        "When the app needs deeper platform work, I can move through SDK integration, bridging, TurboModules, and JSI without getting stuck at abstractions.",
+        "When the app needs custom integrations, SDK work, TurboModules, or JSI, I handle it without turning the codebase into a patchwork of exceptions.",
       icon: "Blocks",
     },
     {
-      title: "Performance and reliability are part of the job",
+      title: "Performance that serves product goals",
       description:
-        "I treat responsiveness, crash reduction, and release stability as core product quality work, not something to revisit later.",
+        "I focus on responsiveness, stability, and the bottlenecks users actually notice, not cosmetic optimization work.",
       icon: "Zap",
     },
     {
-      title: "Reusable systems that reduce future cost",
+      title: "Maintainability over short-term cleverness",
       description:
-        "Internal SDKs, remote configuration, workflow modules, and consistent patterns help teams move faster after the first release.",
+        "Reusable systems, clearer boundaries, and release discipline reduce the cost of building the next feature, not just the current one.",
       icon: "Workflow",
     },
     {
-      title: "Easy to collaborate with at senior level",
+      title: "Collaborative seniority",
       description:
-        "I work well with product, design, QA, and engineering leadership, and I am comfortable mentoring junior engineers while still shipping hands-on.",
+        "I work comfortably with founders, CTOs, product, design, QA, and engineers, and I communicate clearly enough to keep decisions moving.",
       icon: "Users",
     },
   ],
@@ -675,31 +927,38 @@ export const testimonialPlaceholders: TestimonialPlaceholder[] = [
 
 export const contactContent: ContactContent = {
   eyebrow: "Contact",
-  title: "If you need a senior React Native engineer who can own the hard parts, let’s talk.",
+  title: "Need senior React Native engineering that is hands-on, scalable, and production-minded?",
   description:
-    "I am open to freelance builds, contract extensions, architecture reviews, and select full-time roles where mobile engineering has real product impact.",
-  availabilityBadge: siteConfig.availability,
+    "I work with founders, CTOs, product teams, agencies, and recruiters looking for someone who can own architecture, execution, and delivery without a lot of overhead.",
+  availabilityBadge: "Freelance / Contract / Full-time",
   cardTitle:
-    "Need someone who can steady the codebase, improve delivery confidence, and still ship hands-on?",
+    "Building, scaling, or hiring for a serious mobile product?",
   cardDescription:
-    "Reach out if you are planning a new app, modernizing an existing one, or hiring for a senior mobile role that needs architecture and execution in the same person.",
+    "If you need a senior React Native engineer to lead architecture, stabilize delivery, improve performance, or handle platform-heavy work, I am open to freelance, contract, and select full-time opportunities.",
   primaryCta: {
-    label: "Start a conversation",
+    label: "Let's work together",
     href: siteConfig.hireUrl,
   },
   secondaryCta: {
-    label: "View GitHub",
-    href: siteConfig.githubUrl,
+    label: "View LinkedIn",
+    href: siteConfig.linkedinUrl,
+    newTab: true,
+  },
+  resumeCta: {
+    label: "Download Resume",
+    href: siteConfig.resumeUrl,
+    download: true,
   },
   methodsTitle: "Contact details",
-  methodsDescription: "Email and GitHub are wired through the content layer so they stay easy to update.",
-  processTitle: "How I typically work",
+  methodsDescription:
+    "Use email, LinkedIn, or the resume placeholder below. Everything here is wired through the content layer so it is easy to replace later.",
+  processTitle: "What working together looks like",
   processDescription:
-    "Simple, direct, and focused on reducing delivery risk as early as possible.",
+    "Clear scope, direct communication, and delivery with production in mind.",
   processSteps: [
-    "Start with a short discovery call to understand the product, current codebase, and immediate delivery risks.",
-    "Turn that into a pragmatic plan covering architecture priorities, milestones, and the right engagement model.",
-    "Execute hands-on with regular updates, demos, and production-ready delivery from implementation through release.",
+    "Start with a short call to understand product goals, current constraints, and the riskiest parts of the mobile stack.",
+    "Turn that into a practical plan covering architecture priorities, delivery scope, and the right engagement model.",
+    "Execute hands-on with regular check-ins, visible progress, and release-ready implementation.",
   ],
 };
 
@@ -711,10 +970,10 @@ export const contactMethods: ContactMethod[] = [
     icon: "Mail",
   },
   {
-    label: "GitHub",
-    value: "github.com/snjtiam",
-    href: siteConfig.githubUrl,
-    icon: "Github",
+    label: "LinkedIn",
+    value: "linkedin.com/in/your-linkedin-handle",
+    href: siteConfig.linkedinUrl,
+    icon: "Linkedin",
   },
   {
     label: "Response time",
@@ -732,6 +991,11 @@ export const contactMethods: ContactMethod[] = [
 
 export const socialLinks: SocialLink[] = [
   {
+    label: "LinkedIn",
+    href: siteConfig.linkedinUrl,
+    icon: "Linkedin",
+  },
+  {
     label: "GitHub",
     href: siteConfig.githubUrl,
     icon: "Github",
@@ -742,3 +1006,7 @@ export const socialLinks: SocialLink[] = [
     icon: "Mail",
   },
 ];
+
+export function getProjectBySlug(slug: string) {
+  return projectsContent.items.find((project) => project.slug === slug);
+}

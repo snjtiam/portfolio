@@ -1,0 +1,8 @@
+Resume placeholder
+
+Replace this file with the public resume asset you want the portfolio to serve before launch.
+
+Suggested final file:
+- `public/sanjit-soreng-resume.pdf`
+
+Then update `siteConfig.resumeUrl` in `src/content/portfolio.ts` to point to the final resume file.

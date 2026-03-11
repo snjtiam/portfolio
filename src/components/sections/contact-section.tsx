@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 
 import { SectionShell } from "@/components/layout/section-shell";
@@ -8,14 +9,25 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
-export function ContactSection() {
+type ContactSectionProps = {
+  id?: string;
+  showHeading?: boolean;
+  className?: string;
+};
+
+export function ContactSection({
+  id = "contact",
+  showHeading = true,
+  className,
+}: ContactSectionProps) {
   return (
     <SectionShell
-      id="contact"
+      id={id}
       eyebrow={contactContent.eyebrow}
       title={contactContent.title}
       description={contactContent.description}
-      className="bg-gradient-to-b from-white/[0.02] to-transparent"
+      className={cn("bg-gradient-to-b from-white/[0.02] to-transparent", className)}
+      showHeading={showHeading}
     >
       <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
         <Reveal className="h-full" hover hoverY={7} hoverScale={1.008}>
@@ -30,19 +42,39 @@ export function ContactSection() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="flex flex-col gap-3 sm:flex-row">
-                <Button asChild size="lg">
-                  <a href={contactContent.primaryCta.href}>
+              <div className="grid gap-3 sm:grid-cols-2">
+                <Button asChild size="lg" className="w-full sm:w-auto">
+                  <a
+                    href={contactContent.primaryCta.href}
+                    aria-label={`${contactContent.primaryCta.label} via email`}
+                  >
                     {contactContent.primaryCta.label}
                     <ArrowRight className="h-4 w-4" />
                   </a>
                 </Button>
-                <Button asChild size="lg" variant="secondary">
-                  <a href={contactContent.secondaryCta.href}>{contactContent.secondaryCta.label}</a>
+                <Button asChild size="lg" variant="secondary" className="w-full sm:w-auto">
+                  <a
+                    href={contactContent.resumeCta.href}
+                    download={contactContent.resumeCta.download || undefined}
+                  >
+                    {contactContent.resumeCta.label}
+                  </a>
                 </Button>
               </div>
 
-              <div className="grid gap-3 sm:grid-cols-2">
+              <Button asChild variant="ghost" className="w-full justify-between rounded-2xl px-4">
+                <a
+                  href={contactContent.secondaryCta.href}
+                  target={contactContent.secondaryCta.newTab ? "_blank" : undefined}
+                  rel={contactContent.secondaryCta.newTab ? "noreferrer" : undefined}
+                  aria-label={`${contactContent.secondaryCta.label} in a new tab`}
+                >
+                  {contactContent.secondaryCta.label}
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </Button>
+
+              <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
                 {socialLinks.map((link) => {
                   const Icon = iconMap[link.icon];
 
@@ -52,7 +84,8 @@ export function ContactSection() {
                       href={link.href}
                       target={link.href.startsWith("http") ? "_blank" : undefined}
                       rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-                      className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-foreground/75 transition hover:bg-white/[0.05] hover:text-foreground"
+                      aria-label={`Visit ${link.label}`}
+                      className="flex min-h-[48px] items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-foreground/75 transition hover:bg-white/[0.05] hover:text-foreground"
                     >
                       <Icon className="h-4 w-4 text-cyan-200" />
                       {link.label}
@@ -82,7 +115,8 @@ export function ContactSection() {
                         href={method.href}
                         target={method.href.startsWith("http") ? "_blank" : undefined}
                         rel={method.href.startsWith("http") ? "noreferrer" : undefined}
-                        className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-4 transition hover:bg-white/[0.05]"
+                        aria-label={`${method.label}: ${method.value}`}
+                        className="flex min-h-[48px] items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-4 transition hover:bg-white/[0.05]"
                       >
                         <span className="mt-0.5 rounded-full border border-white/10 bg-white/5 p-2 text-cyan-200">
                           <Icon className="h-4 w-4" />
@@ -91,7 +125,9 @@ export function ContactSection() {
                           <span className="block text-xs uppercase tracking-[0.24em] text-foreground/45">
                             {method.label}
                           </span>
-                          <span className="block text-sm text-foreground/75">{method.value}</span>
+                          <span className="block break-all text-sm text-foreground/75 sm:break-words">
+                            {method.value}
+                          </span>
                         </span>
                       </a>
                     );

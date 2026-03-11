@@ -1,19 +1,31 @@
+import { cn } from "@/lib/utils";
 import { SectionShell } from "@/components/layout/section-shell";
 import { Reveal } from "@/components/motion/reveal";
 import { whyWorkWithMeContent } from "@/content/portfolio";
 import { iconMap } from "@/lib/icon-map";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
-export function WhyWorkWithMeSection() {
+type WhyWorkWithMeSectionProps = {
+  id?: string;
+  showHeading?: boolean;
+  className?: string;
+};
+
+export function WhyWorkWithMeSection({
+  id = "why-work-with-me",
+  showHeading = true,
+  className,
+}: WhyWorkWithMeSectionProps) {
   return (
     <SectionShell
-      id="why-work-with-me"
+      id={id}
       eyebrow={whyWorkWithMeContent.eyebrow}
       title={whyWorkWithMeContent.title}
       description={whyWorkWithMeContent.description}
-      className="bg-gradient-to-b from-transparent via-white/[0.012] to-transparent"
+      className={cn("bg-gradient-to-b from-transparent via-white/[0.012] to-transparent", className)}
+      showHeading={showHeading}
     >
-      <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2 2xl:grid-cols-3">
         {whyWorkWithMeContent.items.map((item, index) => {
           const Icon = iconMap[item.icon];
 
@@ -24,6 +36,7 @@ export function WhyWorkWithMeSection() {
               hover
               hoverY={7}
               hoverScale={1.01}
+              className="h-full"
             >
               <Card className="group h-full">
                 <CardHeader className="space-y-4">
