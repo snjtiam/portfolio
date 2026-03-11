@@ -56,11 +56,18 @@ export function AboutSection({
           {aboutContent.stats.map((stat, index) => (
             <Reveal key={stat.label} delay={0.08 * (index + 1)} hover hoverY={5} hoverScale={1.008}>
               <Card className="h-full">
-                <CardContent className="p-6">
-                  <p className="text-3xl font-semibold text-foreground sm:text-[2.1rem]">
-                    {stat.value}
+                <CardContent className="flex h-full min-h-[12.5rem] flex-col justify-center gap-4 p-6 sm:p-7">
+                  <div className="space-y-2">
+                    <p className="text-3xl font-semibold leading-none text-foreground sm:text-[2.1rem]">
+                      {stat.value}
+                    </p>
+                    <p className="text-[0.72rem] uppercase leading-5 tracking-[0.18em] text-foreground/45 sm:text-xs sm:tracking-[0.22em]">
+                      {stat.label}
+                    </p>
+                  </div>
+                  <p className="max-w-[42ch] text-sm leading-6 text-foreground/65 xl:max-w-none">
+                    {stat.detail}
                   </p>
-                  <p className="mt-3 text-sm leading-6 text-foreground/65">{stat.label}</p>
                 </CardContent>
               </Card>
             </Reveal>

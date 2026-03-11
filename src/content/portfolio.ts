@@ -16,6 +16,12 @@ export type Metric = {
   label: string;
 };
 
+export type AboutStat = {
+  value: string;
+  label: string;
+  detail: string;
+};
+
 export type CtaLink = {
   label: string;
   href: string;
@@ -138,7 +144,7 @@ export type HeroContent = {
 export type AboutContent = SectionIntro & {
   paragraphs: string[];
   focusAreas: string[];
-  stats: Metric[];
+  stats: AboutStat[];
 };
 
 export type ServicesContent = SectionIntro & {
@@ -224,7 +230,8 @@ export const heroContent: HeroContent = {
   badge: siteConfig.availability,
   contextLabel: "Scalable React Native Systems",
   roleLine: `${siteConfig.role} / ${siteConfig.speciality}`,
-  headline: "Scalable React Native systems for teams that need speed without technical drag.",
+  headline:
+    "Scalable React Native systems for teams that need speed without technical drag.",
   intro:
     "I design, build, and improve React Native apps for iOS and Android with stronger architecture, sharper performance, and native integrations that hold up in production.",
   secondaryIntro:
@@ -236,7 +243,7 @@ export const heroContent: HeroContent = {
   ],
   metrics: [
     { value: "6+", label: "Years building React Native apps in production" },
-    { value: "50,000+", label: "Users served across shipped mobile products" },
+    { value: "250,000+", label: "Users served across shipped mobile products" },
     { value: "~20%", label: "Performance improvement on key mobile flows" },
   ],
   signals: [
@@ -295,35 +302,41 @@ export const heroContent: HeroContent = {
 
 export const highlightsStrip: HighlightItem[] = [
   {
-    title: "50,000+ users served",
-    detail: "Production mobile work supporting real usage at scale across iOS and Android.",
+    title: "250,000+ users served",
+    detail:
+      "Production mobile work supporting real usage at scale across iOS and Android.",
     icon: "Users",
   },
   {
     title: "~20% performance gains",
-    detail: "Measured improvements on bottlenecked flows through profiling and targeted optimization.",
+    detail:
+      "Measured improvements on bottlenecked flows through profiling and targeted optimization.",
     icon: "Zap",
   },
   {
     title: "Healthcare to fintech",
-    detail: "Experience across healthcare, IoT, video streaming, fintech, and task management.",
+    detail:
+      "Experience across healthcare, IoT, video streaming, fintech, and task management.",
     icon: "Building2",
   },
   {
     title: "Reusable internal systems",
-    detail: "SDKs, remote configuration, offline-capable modules, and scheduling engines.",
+    detail:
+      "SDKs, remote configuration, offline-capable modules, and scheduling engines.",
     icon: "Code2",
   },
   {
     title: "Release-ready delivery",
-    detail: "CI/CD, Fastlane, observability, and production releases treated as first-class work.",
+    detail:
+      "CI/CD, Fastlane, observability, and production releases treated as first-class work.",
     icon: "ShieldCheck",
   },
 ];
 
 export const aboutContent: AboutContent = {
   eyebrow: "About",
-  title: "Senior React Native engineering for products that need more than feature delivery.",
+  title:
+    "Senior React Native engineering for products that need more than feature delivery.",
   description:
     "I help teams turn ambitious mobile products into stable, scalable systems with better architecture, stronger delivery, and codebases that stay workable as the business grows.",
   paragraphs: [
@@ -338,15 +351,31 @@ export const aboutContent: AboutContent = {
     "Team enablement",
   ],
   stats: [
-    { value: "50,000+", label: "users reached across shipped mobile products" },
-    { value: "~20%", label: "performance improvement delivered on critical flows" },
-    { value: "iOS + Android", label: "production ownership from implementation through release" },
+    {
+      value: "5 Domains",
+      label: "Cross-industry product delivery",
+      detail:
+        "Hands-on React Native work across healthcare, IoT, video streaming, fintech, and task management products.",
+    },
+    {
+      value: "SDKs + Infra",
+      label: "Systems beyond screens",
+      detail:
+        "Built internal SDKs, remote config tooling, offline-first modules, and scheduling infrastructure for long-term product use.",
+    },
+    {
+      value: "Planning -> Release",
+      label: "End-to-end ownership",
+      detail:
+        "Comfortable across discovery, implementation, testing, native integration, QA handoff, and production release coordination.",
+    },
   ],
 };
 
 export const servicesContent: ServicesContent = {
   eyebrow: "Services",
-  title: "Senior React Native support for teams building past the prototype stage.",
+  title:
+    "Senior React Native support for teams building past the prototype stage.",
   description:
     "For founders, CTOs, product companies, agencies, and recruiters looking for someone who can own both the hard technical decisions and the delivery behind them.",
   leadIn:
@@ -436,7 +465,8 @@ export const skillsContent: SkillsContent = {
     {
       title: "Core Mobile Stack",
       icon: "Smartphone",
-      description: "The foundation used to build and ship polished cross-platform mobile products.",
+      description:
+        "The foundation used to build and ship polished cross-platform mobile products.",
       items: [
         "React Native",
         "TypeScript",
@@ -449,7 +479,8 @@ export const skillsContent: SkillsContent = {
     {
       title: "Architecture & State",
       icon: "Layers3",
-      description: "Patterns for keeping codebases understandable and scalable under growing product complexity.",
+      description:
+        "Patterns for keeping codebases understandable and scalable under growing product complexity.",
       items: [
         "Feature-based architecture",
         "Redux Toolkit",
@@ -462,7 +493,8 @@ export const skillsContent: SkillsContent = {
     {
       title: "Native & Performance",
       icon: "Blocks",
-      description: "Work at the platform boundary and on the bottlenecks users notice first.",
+      description:
+        "Work at the platform boundary and on the bottlenecks users notice first.",
       items: [
         "TurboModules",
         "JSI",
@@ -475,7 +507,8 @@ export const skillsContent: SkillsContent = {
     {
       title: "Data & Integrations",
       icon: "Globe2",
-      description: "Stable client-side integrations for mobile products with complex backend behavior.",
+      description:
+        "Stable client-side integrations for mobile products with complex backend behavior.",
       items: [
         "REST APIs",
         "GraphQL",
@@ -488,7 +521,8 @@ export const skillsContent: SkillsContent = {
     {
       title: "Product Systems",
       icon: "Sparkles",
-      description: "Higher-level mobile capabilities that support real product workflows, not just isolated screens.",
+      description:
+        "Higher-level mobile capabilities that support real product workflows, not just isolated screens.",
       items: [
         "Offline-first modules",
         "Scheduling and reminders",
@@ -501,7 +535,8 @@ export const skillsContent: SkillsContent = {
     {
       title: "Delivery & Quality",
       icon: "ShieldCheck",
-      description: "The release and collaboration practices that keep shipped apps reliable over time.",
+      description:
+        "The release and collaboration practices that keep shipped apps reliable over time.",
       items: [
         "CI/CD",
         "Fastlane",
@@ -516,7 +551,8 @@ export const skillsContent: SkillsContent = {
 
 export const projectsContent: ProjectsContent = {
   eyebrow: "Selected Projects",
-  title: "Selected projects shaped by scale, platform complexity, and production pressure.",
+  title:
+    "Selected projects shaped by scale, platform complexity, and production pressure.",
   description:
     "A few representative builds that show how I approach architecture, performance, native depth, and delivery without exposing client-sensitive details.",
   items: [
@@ -531,7 +567,14 @@ export const projectsContent: ProjectsContent = {
         "Built an internal SDK covering navigation patterns, analytics hooks, shared UI contracts, and native integration wrappers so teams could start from a stable base instead of rebuilding the same infrastructure.",
       impact:
         "Improved delivery consistency, shortened setup time for new apps, and made cross-app maintenance substantially easier.",
-      stack: ["React Native", "TypeScript", "TurboModules", "JSI", "Native Bridges", "CI/CD"],
+      stack: [
+        "React Native",
+        "TypeScript",
+        "TurboModules",
+        "JSI",
+        "Native Bridges",
+        "CI/CD",
+      ],
       challenges: [
         "Designed stable public APIs so product teams could move fast without leaking internal implementation details",
         "Handled native module boundaries and versioning without creating upgrade pain across consuming apps",
@@ -630,7 +673,14 @@ export const projectsContent: ProjectsContent = {
         "Built assessment, reminder, survey, and care workflow experiences backed by FHIR transformation layers that insulated the mobile app from backend complexity.",
       impact:
         "Improved data quality, simplified client-side logic, and supported production healthcare workflows with fewer failure points.",
-      stack: ["React Native", "TypeScript", "Redux Toolkit", "FHIR", "Firebase", "REST APIs"],
+      stack: [
+        "React Native",
+        "TypeScript",
+        "Redux Toolkit",
+        "FHIR",
+        "Firebase",
+        "REST APIs",
+      ],
       challenges: [
         "Normalized deeply nested FHIR resources into predictable mobile view models and write-back payloads",
         "Handled offline-capable collection, validation, and retry flows for unstable network conditions",
@@ -661,8 +711,9 @@ export const projectsContent: ProjectsContent = {
         "Supported production workflows in a regulated, data-heavy domain",
       ],
       metric: {
-        value: "50,000+",
-        label: "users supported across shipped mobile products in regulated and data-heavy domains",
+        value: "250,000+",
+        label:
+          "users supported across shipped mobile products in regulated and data-heavy domains",
       },
       ctaLabel: "View case study",
       ctaHref: "/projects/healthcare-data-collection-fhir-transformation",
@@ -678,7 +729,14 @@ export const projectsContent: ProjectsContent = {
         "Designed time zone aware calendar views and bespoke visual components for dense operational data, regional rollups, and drill-down analysis on mobile.",
       impact:
         "Made complex schedules and trends easier to interpret while keeping rendering performance under control.",
-      stack: ["React Native", "TypeScript", "Reanimated", "REST APIs", "Supabase", "Custom UI"],
+      stack: [
+        "React Native",
+        "TypeScript",
+        "Reanimated",
+        "REST APIs",
+        "Supabase",
+        "Custom UI",
+      ],
       challenges: [
         "Resolved time zone and daylight-saving edge cases so data appeared in the correct local context",
         "Optimized data-heavy rendering paths to keep scrolling and drill-down interactions smooth",
@@ -710,7 +768,8 @@ export const projectsContent: ProjectsContent = {
       ],
       metric: {
         value: "~20%",
-        label: "performance improvement on key data-heavy screens after profiling and optimization",
+        label:
+          "performance improvement on key data-heavy screens after profiling and optimization",
       },
       ctaLabel: "View case study",
       ctaHref: "/projects/data-visualization-custom-calendar-system",
@@ -822,7 +881,8 @@ export const projectsContent: ProjectsContent = {
 
 export const experienceContent: ExperienceContent = {
   eyebrow: "Experience",
-  title: "An experience timeline shaped by architecture ownership, domain complexity, and production delivery.",
+  title:
+    "An experience timeline shaped by architecture ownership, domain complexity, and production delivery.",
   description:
     "From January 2020 through January 2026, I worked across healthcare, realtime, media, and platform-heavy mobile products, steadily taking on more responsibility for architecture, integrations, reliability, and team guidance.",
   items: [
@@ -870,7 +930,8 @@ export const experienceContent: ExperienceContent = {
 
 export const whyWorkWithMeContent: WhyWorkWithMeContent = {
   eyebrow: "Why Work With Me",
-  title: "Why teams bring me in when mobile complexity starts getting expensive.",
+  title:
+    "Why teams bring me in when mobile complexity starts getting expensive.",
   description:
     "I bring senior React Native judgment to architecture, performance, native work, and delivery, while staying practical and easy to work with.",
   items: [
@@ -910,29 +971,32 @@ export const whyWorkWithMeContent: WhyWorkWithMeContent = {
 export const testimonialPlaceholders: TestimonialPlaceholder[] = [
   {
     title: "Founder quote",
-    prompt: "Add a quote about strong ownership, clean communication, and confidence during delivery.",
+    prompt:
+      "Add a quote about strong ownership, clean communication, and confidence during delivery.",
     role: "Founder or startup lead",
   },
   {
     title: "Client quote",
-    prompt: "Add a quote about architecture judgment, reliability, and shipping without constant oversight.",
+    prompt:
+      "Add a quote about architecture judgment, reliability, and shipping without constant oversight.",
     role: "Freelance or contract client",
   },
   {
     title: "Manager quote",
-    prompt: "Add a quote about seniority, collaboration, and raising engineering quality on the team.",
+    prompt:
+      "Add a quote about seniority, collaboration, and raising engineering quality on the team.",
     role: "Engineering manager or tech lead",
   },
 ];
 
 export const contactContent: ContactContent = {
   eyebrow: "Contact",
-  title: "Need senior React Native engineering that is hands-on, scalable, and production-minded?",
+  title:
+    "Need senior React Native engineering that is hands-on, scalable, and production-minded?",
   description:
     "I work with founders, CTOs, product teams, agencies, and recruiters looking for someone who can own architecture, execution, and delivery without a lot of overhead.",
   availabilityBadge: "Freelance / Contract / Full-time",
-  cardTitle:
-    "Building, scaling, or hiring for a serious mobile product?",
+  cardTitle: "Building, scaling, or hiring for a serious mobile product?",
   cardDescription:
     "If you need a senior React Native engineer to lead architecture, stabilize delivery, improve performance, or handle platform-heavy work, I am open to freelance, contract, and select full-time opportunities.",
   primaryCta: {
