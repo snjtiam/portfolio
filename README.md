@@ -1,31 +1,36 @@
-# Portfolio Website
+# Portfolio
 
-Premium portfolio website for a Senior React Native Engineer, built with Next.js 15 App Router, TypeScript, Tailwind CSS, reusable shadcn/ui-style components, Framer Motion, lucide-react, and Playwright coverage for responsive QA.
+Conversion-focused portfolio site for a Senior React Native Engineer, built with Next.js 15 App Router, TypeScript, Tailwind CSS, Framer Motion, and a content-driven architecture that keeps most copy and metadata in a small set of files.
+
+## What this project includes
+
+- A long-form homepage with section navigation for `About`, `Services`, `Skills`, `Projects`, `Experience`, `Why Work With Me`, and `Contact`
+- Dedicated route pages for `/about`, `/services`, `/projects`, `/experience`, and `/contact`
+- Dynamic project detail pages at `/projects/[slug]`
+- Centralized content and metadata in `src/content`
+- Generated SEO and sharing assets: sitemap, robots, manifest, Open Graph image, Twitter image, and JSON-LD
+- Responsive UI coverage with Playwright screenshots and navigation checks
 
 ## Stack
 
-- Next.js 15 App Router
+- Next.js 15
+- React 19
 - TypeScript
 - Tailwind CSS
-- Reusable shadcn/ui-style component structure
 - Framer Motion
 - lucide-react
-- Playwright
+- Radix Slot and utility-based UI primitives
+- Playwright for end-to-end responsive QA
 
-## Install
+## Getting started
+
+Install dependencies:
 
 ```bash
 npm install
-npx playwright install chromium
 ```
 
-On Windows PowerShell with script execution disabled, use:
-
-```bash
-npx.cmd playwright install chromium
-```
-
-## Run locally
+Start the development server:
 
 ```bash
 npm run dev
@@ -33,41 +38,83 @@ npm run dev
 
 Open `http://localhost:3000`.
 
-## Scripts
+If PowerShell script execution is disabled, use the Windows command shims instead:
 
-- `npm run dev` starts the development server
+```bash
+npm.cmd install
+npm.cmd run dev
+```
+
+## Available scripts
+
+- `npm run dev` starts the local dev server
 - `npm run build` creates a production build
-- `npm run start` runs the production build
+- `npm run start` serves the production build
 - `npm run lint` runs ESLint
-- `npm run typecheck` runs TypeScript checks
-- `npm run test:e2e` runs the Playwright test suite
+- `npm run typecheck` runs `tsc --noEmit`
+- `npm run test:e2e` runs the Playwright suite
 - `npm run test:e2e:headed` runs Playwright with a visible browser
+
+## Running Playwright
+
+Install the browser binary before the first run:
+
+```bash
+npx playwright install chromium
+```
+
+On PowerShell with script execution disabled:
+
+```bash
+npx.cmd playwright install chromium
+```
+
+This repository already contains Playwright config and tests. If a clean install is missing `@playwright/test`, add it with:
+
+```bash
+npm install -D @playwright/test
+```
 
 ## Content editing
 
-Primary site content lives in:
+Most site content lives in two files:
 
-- [src/content/portfolio.ts](./src/content/portfolio.ts)
-- [src/content/pages.ts](./src/content/pages.ts)
+- `src/content/portfolio.ts`
+- `src/content/pages.ts`
 
-Update those files to replace:
+Use `src/content/portfolio.ts` to update:
 
-- name, role, email, LinkedIn, GitHub, and resume links
-- hero copy and conversion CTAs
-- services, skills, projects, and experience content
-- page intros, route metadata, and navigation labels
-- `siteConfig.url` for production metadata, sitemap, and robots output
+- name, role, location, email, LinkedIn, GitHub, and resume link
+- homepage hero copy, highlights, services, skills, projects, experience, testimonials, and contact content
+- footer copy, social links, and route-wide CTAs
+
+Use `src/content/pages.ts` to update:
+
+- top-level route labels
+- page intros for secondary routes
+- page-specific metadata titles and descriptions
+
+Replace the placeholder resume file in `public/sanjit-soreng-resume-placeholder.txt` and update `siteConfig.resumeUrl` if the filename changes.
+
+Update `siteConfig.url` in `src/content/portfolio.ts` before production deployment. That value is used for canonical URLs, sitemap output, robots metadata, manifest URLs, and social images.
+
+## Routes
+
+- `/` homepage with section-based navigation
+- `/about`
+- `/services`
+- `/projects`
+- `/projects/[slug]`
+- `/experience`
+- `/contact`
 
 ## Project structure
 
 ```text
 .
-|-- README.md
-|-- components.json
-|-- next.config.ts
-|-- package.json
-|-- playwright.config.ts
 |-- public
+|   |-- icon.svg
+|   `-- sanjit-soreng-resume-placeholder.txt
 |-- src
 |   |-- app
 |   |   |-- about
@@ -75,10 +122,13 @@ Update those files to replace:
 |   |   |-- experience
 |   |   |-- projects
 |   |   |-- services
-|   |   |-- globals.css
+|   |   |-- apple-icon.tsx
 |   |   |-- layout.tsx
-|   |   |-- page.tsx
-|   |   `-- sitemap.ts
+|   |   |-- manifest.ts
+|   |   |-- opengraph-image.tsx
+|   |   |-- robots.ts
+|   |   |-- sitemap.ts
+|   |   `-- twitter-image.tsx
 |   |-- components
 |   |   |-- layout
 |   |   |-- motion
@@ -92,14 +142,24 @@ Update those files to replace:
 |   `-- lib
 |       |-- icon-map.ts
 |       |-- seo.ts
+|       |-- social-image.tsx
 |       `-- utils.ts
-`-- tests
+|-- tests
+|   `-- portfolio.spec.ts
+|-- next.config.ts
+|-- playwright.config.ts
+`-- tailwind.config.ts
 ```
 
-## Notes
+## Verification
 
-- Dark mode is the default visual style.
-- The homepage remains conversion-focused with sticky anchor navigation.
-- Detail routes exist for services, projects, experience, about, and contact.
-- Project cards are structured to support detail pages and future modal or CMS expansion.
-- Playwright covers the key responsive breakpoints requested for UI QA.
+The current codebase passes:
+
+- `npm.cmd run typecheck`
+
+Responsive QA is implemented in `tests/portfolio.spec.ts` for:
+
+- homepage rendering across mobile, tablet, laptop, and desktop breakpoints
+- mobile navigation interaction and section linking
+- secondary route visibility
+- project detail page rendering
