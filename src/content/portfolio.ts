@@ -109,13 +109,6 @@ export type TestimonialPlaceholder = {
   role: string;
 };
 
-export type ContactMethod = {
-  label: string;
-  value: string;
-  href: string;
-  icon: IconName;
-};
-
 export type WhyWorkWithMeItem = {
   title: string;
   description: string;
@@ -174,10 +167,7 @@ export type ContactContent = SectionIntro & {
   cardTitle: string;
   cardDescription: string;
   primaryCta: CtaLink;
-  secondaryCta: CtaLink;
   resumeCta: CtaLink;
-  methodsTitle: string;
-  methodsDescription: string;
   processTitle: string;
   processDescription: string;
   processSteps: string[];
@@ -1003,19 +993,11 @@ export const contactContent: ContactContent = {
     label: "Let's work together",
     href: siteConfig.hireUrl,
   },
-  secondaryCta: {
-    label: "View LinkedIn",
-    href: siteConfig.linkedinUrl,
-    newTab: true,
-  },
   resumeCta: {
     label: "Download Resume",
     href: siteConfig.resumeUrl,
     download: true,
   },
-  methodsTitle: "Contact details",
-  methodsDescription:
-    "Use email, LinkedIn, or the resume placeholder below. Everything here is wired through the content layer so it is easy to replace later.",
   processTitle: "What working together looks like",
   processDescription:
     "Clear scope, direct communication, and delivery with production in mind.",
@@ -1025,33 +1007,6 @@ export const contactContent: ContactContent = {
     "Execute hands-on with regular check-ins, visible progress, and release-ready implementation.",
   ],
 };
-
-export const contactMethods: ContactMethod[] = [
-  {
-    label: "Email",
-    value: siteConfig.email,
-    href: `mailto:${siteConfig.email}`,
-    icon: "Mail",
-  },
-  {
-    label: "LinkedIn",
-    value: "linkedin.com/in/your-linkedin-handle",
-    href: siteConfig.linkedinUrl,
-    icon: "Linkedin",
-  },
-  {
-    label: "Response time",
-    value: "Usually within 24 to 48 hours",
-    href: "#contact",
-    icon: "Clock3",
-  },
-  {
-    label: "Location",
-    value: siteConfig.location,
-    href: "#contact",
-    icon: "MapPin",
-  },
-];
 
 export const socialLinks: SocialLink[] = [
   {
