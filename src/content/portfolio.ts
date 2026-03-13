@@ -180,12 +180,13 @@ export const siteConfig = {
   speciality: "Architecture, Native Integrations, and Delivery Systems",
   location: "Remote, India",
   availability: "Available for freelance, contract, and select full-time roles",
-  email: "hello@yourdomain.com",
-  linkedinUrl: "https://linkedin.com/in/your-linkedin-handle",
+  email: "iamsnjt@gmail.com",
+  linkedinUrl: "https://www.linkedin.com/in/sanjitsoreng/",
   githubUrl: "https://github.com/snjtiam",
-  resumeUrl: "/sanjit-soreng-resume-placeholder.txt",
-  url: "https://snjtiam.github.io/portfolio",
-  hireUrl: "mailto:hello@yourdomain.com?subject=React%20Native%20Inquiry",
+  resumeUrl:
+    "https://docs.google.com/document/d/1tqoONel2plWcr2777DtVY0frOfFs58W_29UEAvb4fqI/edit?usp=sharing",
+  url: "https://www.sanjitsoreng.com",
+  hireUrl: "mailto:iamsnjt@gmail.com?subject=React%20Native%20Inquiry",
   seoTitle:
     "Senior React Native Engineer | Scalable Mobile App Development, Architecture, Performance, and Native Integrations",
   seoDescription:
